@@ -1,7 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "@angular/fire/auth";
+import {
+    Auth,
+    createUserWithEmailAndPassword,
+    sendPasswordResetEmail,
+    signInWithEmailAndPassword,
+    signOut
+} from "@angular/fire/auth";
 import { ToastService } from "../toast/toast.service";
 
 @Injectable({
@@ -59,5 +65,17 @@ export class AuthService {
 
         // Navigate to sign-in
         await this.router.navigateByUrl('/signin');
+    }
+
+    async resetPasswordViaEmail(email: string) {
+
+        try {
+            await sendPasswordResetEmail(this.auth, email)
+            await this.toastService.presentToast('Password Reset Successful', `Please check your Junk Email for reset link password.`, 'top', 'success', 3500);
+        } catch (e) {
+            console.log("Error: ", e)
+            await this.toastService.presentToast('Reset Password Failed', `Reason: ${e}`, 'top', 'danger', 2000);
+        }
+
     }
 }
