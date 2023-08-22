@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "@angular/fire/auth";
+import { ToastService } from "../toast/toast.service";
 
 @Injectable({
     providedIn: 'root'
@@ -10,7 +11,8 @@ export class AuthService {
 
     constructor(
         private router: Router,
-        private auth: Auth
+        private auth: Auth,
+        private toastService: ToastService,
     ) {
     }
 
@@ -36,7 +38,7 @@ export class AuthService {
             return await signInWithEmailAndPassword(this.auth, email, password);
         } catch (e) {
             console.log("Error: ", e)
-            return null;
+            await this.toastService.presentToast('Login Failed', `Reason: ${e}`, 'top', 'danger', 2000);
         }
     }
 
@@ -46,7 +48,7 @@ export class AuthService {
             return await createUserWithEmailAndPassword(this.auth, email, password);
         } catch (e) {
             console.log("Error: ", e)
-            return null;
+            await this.toastService.presentToast('Sign Up Failed', `Reason: ${e}`, 'top', 'danger', 2000);
         }
     }
 
