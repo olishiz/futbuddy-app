@@ -1,6 +1,7 @@
 {
 	"appId": "io.ionic.starter",
-	"appName": "basicTemplate",
+	"appName": "FutBuddy",
 	"webDir": "www",
-	"bundledWebRuntime": false
+	"bundledWebRuntime": false,
+	"ios": { "scheme": "FutBuddy" }
 }

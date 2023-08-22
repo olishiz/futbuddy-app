@@ -1,0 +1,29 @@
+<ion-content>
+  <swiper class="swiper-welcome" #swiper [config]="config" (slideChange)="swiperSlideChanged($event)"
+    (reachEnd)="onLastSlide()">
+    <ng-template swiperSlide>
+      <ion-icon name="football-outline"></ion-icon>
+      <h3 class="animate__animated animate__fadeInUp">Dive into the Futsal Fever</h3>
+      <p class="animate__animated animate__fadeInUp">Experience the thrilling world of futsal, and immerse yourself in its high-paced, skill-driven gameplay.</p>
+    </ng-template>
+    <ng-template swiperSlide>
+      <ion-icon name="people-outline"></ion-icon>
+      <h3 class="animate__animated animate__fadeInUp">Connect with Futsal Lovers</h3>
+      <p class="animate__animated animate__fadeInUp">Join a vast community of enthusiasts who share your passion. Connect, play, and share memorable moments.</p>
+    </ng-template>
+    <ng-template swiperSlide>
+      <ion-icon name="body-outline"></ion-icon>
+      <h3 class="animate__animated animate__fadeInUp">Make New Friends & Form Teams</h3>
+      <p class="animate__animated animate__fadeInUp">Don't just play; bond! Create or join teams, foster friendships, and enjoy the social side of futsal.</p>
+    </ng-template>
+  </swiper>
+</ion-content>
+
+<ion-footer class="ion-padding-bottom-large animate__animated animate__fadeInUp">
+  <ion-button class="ion-margin" expand="block" (click)="nextSlide()" *ngIf="!last_slide">
+    Next
+  </ion-button>
+  <ion-button class="ion-margin" expand="block" (click)="getStarted()" *ngIf="last_slide">
+    Get started
+  </ion-button>
+</ion-footer>
