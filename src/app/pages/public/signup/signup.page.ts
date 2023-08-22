@@ -43,7 +43,7 @@ export class SignupPage implements OnInit {
 
         // If email or password empty
         if (this.signup_form.value.email == '' || this.signup_form.value.password == '' || this.signup_form.value.name == '') {
-            this.toastService.presentToast('Error', 'Please fill in all fields', 'top', 'danger', 4000);
+            await this.toastService.presentToast('Error', 'Please fill in all fields', 'top', 'danger', 4000);
 
         } else {
 
@@ -58,6 +58,8 @@ export class SignupPage implements OnInit {
 
             // Sign up with Firebase Authentication
             const user = await this.authService.signUp(this.signup_form.get('email')?.value, this.signup_form.get('password')?.value);
+
+            const name = this.signup_form.get('name')?.value
 
             // TODO:: Do something here to save username
 
