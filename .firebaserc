@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "futbuddy-kl": {
+      "hosting": {
+        "app": [
+          "futbuddy-kl"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "futbuddy-kl"
+  }
+}
