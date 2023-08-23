@@ -25,10 +25,28 @@ import { getRemoteConfig, provideRemoteConfig } from '@angular/fire/remote-confi
 import { getStorage, provideStorage } from '@angular/fire/storage';
 
 @NgModule({
-  declarations: [AppComponent],
-  entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot({ mode: 'ios' }), ReactiveFormsModule, AppRoutingModule, NgChartsModule, provideFirebaseApp(() => initializeApp(environment.firebase)), provideAnalytics(() => getAnalytics()), provideAuth(() => getAuth()), provideDatabase(() => getDatabase()), provideFirestore(() => getFirestore()), provideFunctions(() => getFunctions()), provideMessaging(() => getMessaging()), providePerformance(() => getPerformance()), provideRemoteConfig(() => getRemoteConfig()), provideStorage(() => getStorage())],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, ScreenTrackingService,UserTrackingService],
-  bootstrap: [AppComponent],
+    declarations: [AppComponent],
+    entryComponents: [],
+    imports: [BrowserModule,
+        IonicModule.forRoot({mode: 'ios'}),
+        ReactiveFormsModule,
+        AppRoutingModule,
+        NgChartsModule,
+        provideFirebaseApp(() => initializeApp(environment.firebase)),
+        provideAnalytics(() => getAnalytics()),
+        provideAuth(() => getAuth()),
+        provideDatabase(() => getDatabase()),
+        provideFirestore(() => getFirestore()),
+        provideFunctions(() => getFunctions()),
+        provideMessaging(() => getMessaging()),
+        providePerformance(() => getPerformance()),
+        provideRemoteConfig(() => getRemoteConfig()),
+        provideStorage(() => getStorage())],
+    providers: [{
+        provide: RouteReuseStrategy,
+        useClass: IonicRouteStrategy
+    }, ScreenTrackingService, UserTrackingService],
+    bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {
+}
