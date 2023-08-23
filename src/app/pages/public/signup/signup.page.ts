@@ -5,7 +5,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastService } from 'src/app/services/toast/toast.service';
 import { Router } from '@angular/router';
 
-import { collection, collectionData, Firestore } from "@angular/fire/firestore";
+import { addDoc, collection, collectionData, Firestore } from "@angular/fire/firestore";
+import { IUser } from "../../../models/user.model";
 
 @Component({
     selector: 'app-signup',
@@ -13,8 +14,6 @@ import { collection, collectionData, Firestore } from "@angular/fire/firestore";
     styleUrls: ['./signup.page.scss'],
 })
 export class SignupPage implements OnInit {
-
-
 
     current_year: number = new Date().getFullYear();
 
@@ -69,9 +68,18 @@ export class SignupPage implements OnInit {
             // Sign up with Firebase Authentication
             const user = await this.authService.signUp(this.signup_form.get('email')?.value, this.signup_form.get('password')?.value);
 
-            const name = this.signup_form.get('name')?.value
 
             // TODO:: Do something here to save username
+            const name: IUser = {
+                name: this.signup_form.get('name')?.value,
+                email: this.signup_form.get('email')?.value,
+                password: this.signup_form.get('password')?.value,
+            };
+
+
+            // adding name
+            const userRef = collection(this.firestore, 'users')
+            await addDoc(userRef, name)
 
             await loading.dismiss();
 
