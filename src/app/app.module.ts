@@ -36,7 +36,9 @@ import { getStorage, provideStorage } from '@angular/fire/storage';
         provideAnalytics(() => getAnalytics()),
         provideAuth(() => getAuth()),
         provideDatabase(() => getDatabase()),
-        provideFirestore(() => getFirestore()),
+        provideFirestore(() => {
+            return getFirestore();
+        }),
         provideFunctions(() => getFunctions()),
         provideMessaging(() => getMessaging()),
         providePerformance(() => getPerformance()),

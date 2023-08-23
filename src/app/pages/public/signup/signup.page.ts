@@ -5,12 +5,16 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastService } from 'src/app/services/toast/toast.service';
 import { Router } from '@angular/router';
 
+import { collection, collectionData, Firestore } from "@angular/fire/firestore";
+
 @Component({
     selector: 'app-signup',
     templateUrl: './signup.page.html',
     styleUrls: ['./signup.page.scss'],
 })
 export class SignupPage implements OnInit {
+
+
 
     current_year: number = new Date().getFullYear();
 
@@ -22,7 +26,8 @@ export class SignupPage implements OnInit {
         private loadingController: LoadingController,
         private formBuilder: FormBuilder,
         private toastService: ToastService,
-        private router: Router
+        private router: Router,
+        private firestore: Firestore
     ) {
     }
 
@@ -34,6 +39,11 @@ export class SignupPage implements OnInit {
             email: ['', Validators.compose([Validators.email, Validators.required])],
             password: ['', Validators.compose([Validators.minLength(6), Validators.required])],
         });
+
+        const usersRef = collection(this.firestore, 'users');
+        const data = collectionData(usersRef);
+        console.log(data)
+
     }
 
     // Sign up
