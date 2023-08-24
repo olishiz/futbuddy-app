@@ -28,36 +28,77 @@
         </ion-list-header>
 
         <!-- Skeletons -->
-        <ion-list class="item-card-list animate__animated animate__fadeIn" *ngIf="!content_loaded">
-            <ion-item lines="none" *ngFor="let i of [].constructor(1);">
-                <ion-avatar slot="start">
-                    <ion-skeleton-text animated></ion-skeleton-text>
-                </ion-avatar>
-                <ion-label>
-                    <h3>
-                        <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
-                    </h3>
-                    <p>
-                        <ion-skeleton-text animated style="width: 30%"></ion-skeleton-text>
-                    </p>
-                </ion-label>
-            </ion-item>
-        </ion-list>
+        <!--        <ion-list class="item-card-list animate__animated animate__fadeIn" *ngIf="!content_loaded">-->
+        <!--            <ion-item lines="none" *ngFor="let i of [].constructor(1);">-->
+        <!--                <ion-avatar slot="start">-->
+        <!--                    <ion-skeleton-text animated></ion-skeleton-text>-->
+        <!--                </ion-avatar>-->
+        <!--                <ion-label>-->
+        <!--                    <h3>-->
+        <!--                        <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>-->
+        <!--                    </h3>-->
+        <!--                    <p>-->
+        <!--                        <ion-skeleton-text animated style="width: 30%"></ion-skeleton-text>-->
+        <!--                    </p>-->
+        <!--                </ion-label>-->
+        <!--            </ion-item>-->
+        <!--        </ion-list>-->
 
         <!--   Real items here   -->
-        <ion-list class="item-card-list animate__animated animate__fadeIn" *ngIf="content_loaded" lines="none">
-            <ion-item button detail>
-                <ion-avatar slot="start" class="ion-avatar-default-icon">
-                    <ion-icon name="wallet"></ion-icon>
-                </ion-avatar>
-                <ion-label>
-                    <h3>$71,648.13</h3>
-                    <p>Bank of America</p>
-                </ion-label>
-            </ion-item>
-        </ion-list>
+        <!--        <ion-list class="item-card-list animate__animated animate__fadeIn" *ngIf="content_loaded" lines="none">-->
+        <!--            <ion-item button detail>-->
+        <!--                <ion-avatar slot="start" class="ion-avatar-default-icon">-->
+        <!--                    <ion-icon name="wallet"></ion-icon>-->
+        <!--                </ion-avatar>-->
+        <!--                <ion-label>-->
+        <!--                    <h3>$71,648.13</h3>-->
+        <!--                    <p>Bank of America</p>-->
+        <!--                </ion-label>-->
+        <!--            </ion-item>-->
+        <!--        </ion-list>-->
 
-        <hr>
+        <!--        <hr>-->
+
+        <ion-card *ngFor="let game of activeGames">
+            <!--            <img alt="Silhouette of mountains" [src]="game.location.image" />-->
+            <img alt="Silhouette of mountains"
+                 src="https://lh3.googleusercontent.com/p/AF1QipPMKO5u_LNy9mgmW5N1EItNOj_tVMKWctBzGvYs=s680-w680-h510"/>
+            <ion-card-header style="padding-bottom: 0">
+                <ion-card-title>{{ game.name }}</ion-card-title>
+                <ion-card-subtitle>
+                    {{ game.date }}
+                    <br>
+                    {{ game.time }}
+                </ion-card-subtitle>
+            </ion-card-header>
+            <ion-card-content>
+                <ion-text color="light">
+                    <ion-chip>
+                        <ion-icon name="people"></ion-icon>
+                        <ion-label>{{ calculateSpotsLeft(game) }} spots left</ion-label>
+                    </ion-chip>
+                    <br>
+                </ion-text>
+
+                <ion-text color="light">
+                    <ion-icon name="cash-outline"></ion-icon>
+                    Price: {{ game.price }}
+                    <br>
+                </ion-text>
+
+                <ion-text color="light">
+                    <ion-icon name="location"></ion-icon>
+                    Location: {{ game.location }}
+                    <br>
+                </ion-text>
+
+
+                <br>
+                <ion-button (click)="goToGamePage(game)">Book Slot</ion-button>
+
+            </ion-card-content>
+        </ion-card>
+
 
         <!--        <ion-list-header>-->
         <!--            <ion-label color="white">Recent transactions</ion-label>-->

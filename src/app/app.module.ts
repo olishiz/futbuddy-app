@@ -24,6 +24,8 @@ import { getPerformance, providePerformance } from '@angular/fire/performance';
 import { getRemoteConfig, provideRemoteConfig } from '@angular/fire/remote-config';
 import { getStorage, provideStorage } from '@angular/fire/storage';
 
+import { FIREBASE_OPTIONS } from '@angular/fire/compat';
+
 @NgModule({
     declarations: [AppComponent],
     entryComponents: [],
@@ -44,10 +46,15 @@ import { getStorage, provideStorage } from '@angular/fire/storage';
         providePerformance(() => getPerformance()),
         provideRemoteConfig(() => getRemoteConfig()),
         provideStorage(() => getStorage())],
-    providers: [{
-        provide: RouteReuseStrategy,
-        useClass: IonicRouteStrategy
-    }, ScreenTrackingService, UserTrackingService],
+    providers: [
+        {
+            provide: RouteReuseStrategy,
+            useClass: IonicRouteStrategy
+        },
+        ScreenTrackingService,
+        UserTrackingService,
+        {provide: FIREBASE_OPTIONS, useValue: environment.firebase}
+    ],
     bootstrap: [AppComponent],
 })
 export class AppModule {

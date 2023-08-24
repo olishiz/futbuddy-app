@@ -1,0 +1,90 @@
+<ion-header collapse="fade" [translucent]="true">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button text="Home" defaultHref="/home">
+            </ion-back-button>
+        </ion-buttons>
+        <ion-title>
+            Game Session Detail
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <ion-list-header class="ion-text-center">
+        <ion-label color="white">{{ (game$ | async)?.name }}</ion-label>
+    </ion-list-header>
+
+    <ion-img src="https://lh3.googleusercontent.com/p/AF1QipPMKO5u_LNy9mgmW5N1EItNOj_tVMKWctBzGvYs=s680-w680-h510"
+             alt="Futsal court">
+    </ion-img>
+
+    <ion-grid>
+        <ion-row>
+            <ion-col>
+                <ion-chip color="tertiary">Format: 5v5</ion-chip>
+            </ion-col>
+            <ion-col>
+                <ion-chip color="tertiary">Price: {{ (game$ | async)?.price }} </ion-chip>
+            </ion-col>
+            <ion-col>
+                <ion-chip color="tertiary">Floor: Futsal tiles</ion-chip>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+    <div class="ion-text-center">
+        <ion-text color="light" style="margin-top: 10px">
+            <ion-icon name="location"></ion-icon>
+            Location: {{ (game$ | async)?.location }}
+            <br>
+        </ion-text>
+    </div>
+
+    <div class="ion-text-center">
+        <ion-text color="light" style="margin-top: 10px">
+            <ion-icon name="calendar-outline"></ion-icon>
+            Date: {{ (game$ | async)?.date }}
+            <br>
+        </ion-text>
+    </div>
+
+    <hr style="background: grey">
+
+    <div class="ion-text-center">
+
+        <!-- Spots left -->
+        <ion-chip>
+            <ion-icon name="people"></ion-icon>
+            <ion-label>{{ calculateSpotsLeft() }} spots left</ion-label>
+        </ion-chip>
+
+        <br>
+        Lineup
+        <br>
+
+        Total players signed up: {{ (playerList$ | async)?.length }}
+
+        <ion-grid>
+            <ion-row>
+                <ion-col size="6" *ngFor="let player of playerList$ | async; let i = index">
+                    <ion-item>
+                        <ion-label>{{ i + 1 }}. {{ player.playerName }}</ion-label>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+
+
+    </div>
+
+    <hr style="background: grey">
+
+    <div class="ion-text-center">
+        <ion-button (click)="addPlayerToGame(id)">Book Slot</ion-button>
+    </div>
+
+    <br> <br>
+
+</ion-content>

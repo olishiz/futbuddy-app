@@ -3,23 +3,32 @@ import { Router } from '@angular/router';
 
 import {
     Auth,
+    authState,
     createUserWithEmailAndPassword,
     sendPasswordResetEmail,
     signInWithEmailAndPassword,
     signOut
 } from "@angular/fire/auth";
 import { ToastService } from "../toast/toast.service";
+import { Observable } from "rxjs";
 
 @Injectable({
     providedIn: 'root'
 })
 export class AuthService {
 
+    user: Observable<any>;  // Observable to hold user session details
+
     constructor(
         private router: Router,
         private auth: Auth,
         private toastService: ToastService,
     ) {
+
+        // Subscribe to the authState observable to track user session changes
+        this.user = authState(this.auth);
+        console.log('auth service - ', this.user)
+
     }
 
     // Get user session
@@ -29,13 +38,8 @@ export class AuthService {
         // put auth session here
         // ...
 
-        // Sample only - remove this after real authentication / session
-        let session = {
-            email: 'john.doe@mail.com'
-        }
-
-        return false;
-        // return session;
+        // authState observable will automatically emit the user's session details
+        return this.user.toPromise();
     }
 
     // Sign in
