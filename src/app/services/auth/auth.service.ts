@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 
 import {
     Auth,
-    authState,
     createUserWithEmailAndPassword,
     sendPasswordResetEmail,
     signInWithEmailAndPassword,
@@ -24,11 +23,6 @@ export class AuthService {
         private auth: Auth,
         private toastService: ToastService,
     ) {
-
-        // Subscribe to the authState observable to track user session changes
-        this.user = authState(this.auth);
-        console.log('auth service - ', this.user)
-
     }
 
     // Get user session
