@@ -33,7 +33,9 @@ export class AuthService {
         // ...
 
         // authState observable will automatically emit the user's session details
-        return this.user.toPromise();
+        // return this.user.toPromise();
+
+        return false
     }
 
     // Sign in

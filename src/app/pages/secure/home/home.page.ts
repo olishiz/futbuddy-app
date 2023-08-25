@@ -41,10 +41,6 @@ export class HomePage implements OnInit {
             console.log('the active games boy', this.activeGames)
         })
 
-        this.user = this.authService.getSession()
-        console.log('the user session', this.user)
-
-
         // Fake timeout
         setTimeout(() => {
             this.content_loaded = true;

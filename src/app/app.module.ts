@@ -7,9 +7,6 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-// ReactiveForms
-import { ReactiveFormsModule } from '@angular/forms';
-
 // NgCharts
 import { NgChartsModule } from 'ng2-charts';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
@@ -24,12 +21,17 @@ import { getPerformance, providePerformance } from '@angular/fire/performance';
 import { getRemoteConfig, provideRemoteConfig } from '@angular/fire/remote-config';
 import { getStorage, provideStorage } from '@angular/fire/storage';
 
+
+// ReactiveForms
+import { ReactiveFormsModule } from '@angular/forms';
+
 import { FIREBASE_OPTIONS } from '@angular/fire/compat';
 
 @NgModule({
     declarations: [AppComponent],
     entryComponents: [],
-    imports: [BrowserModule,
+    imports: [
+        BrowserModule,
         IonicModule.forRoot({mode: 'ios'}),
         ReactiveFormsModule,
         AppRoutingModule,
@@ -38,14 +40,13 @@ import { FIREBASE_OPTIONS } from '@angular/fire/compat';
         provideAnalytics(() => getAnalytics()),
         provideAuth(() => getAuth()),
         provideDatabase(() => getDatabase()),
-        provideFirestore(() => {
-            return getFirestore();
-        }),
+        provideFirestore(() => getFirestore()),
         provideFunctions(() => getFunctions()),
         provideMessaging(() => getMessaging()),
         providePerformance(() => getPerformance()),
         provideRemoteConfig(() => getRemoteConfig()),
-        provideStorage(() => getStorage())],
+        provideStorage(() => getStorage())
+    ],
     providers: [
         {
             provide: RouteReuseStrategy,
@@ -53,9 +54,13 @@ import { FIREBASE_OPTIONS } from '@angular/fire/compat';
         },
         ScreenTrackingService,
         UserTrackingService,
-        {provide: FIREBASE_OPTIONS, useValue: environment.firebase}
+        {
+            provide: FIREBASE_OPTIONS,
+            useValue: environment.firebase
+        }
     ],
     bootstrap: [AppComponent],
 })
+
 export class AppModule {
 }
