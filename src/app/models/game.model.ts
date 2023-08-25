@@ -7,4 +7,5 @@ export interface IGame {
     price: any;
     status: any;
     numOfPlayers: any;
+    spotsLeft: any;
 }

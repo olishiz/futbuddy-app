@@ -16,12 +16,12 @@ export class HomePage implements OnInit {
     games: IGame[] = [];
     activeGames: IGame[] = []
 
-    user: any
-
     content_loaded: boolean = false;
 
     playerList: any
     playerList$: Observable<any[]>;
+
+    private spotsLeft: number;
 
     constructor(
         private dataService: DataService,
@@ -36,6 +36,11 @@ export class HomePage implements OnInit {
         this.dataService.getGames().subscribe((res: IGame[]) => {
             this.games = res
             this.activeGames = this.games.filter(game => game.status === 'ACTIVE')
+
+            // Calculate and set spotsLeft for each game
+            this.activeGames.forEach(game => {
+                this.calculateSpotsLeft(game);
+            });
 
             console.log('the games boy', this.games)
             console.log('the active games boy', this.activeGames)
@@ -53,17 +58,12 @@ export class HomePage implements OnInit {
 
     calculateSpotsLeft(game: any) {
 
-        this.playerList$ = this.getPlayerList(game.id);
+        this.getPlayerList(game.id).subscribe(playerList => {
+            const spotsLeft = game.numOfPlayers - playerList.length;
+            game.spotsLeft = spotsLeft >= 0 ? spotsLeft : 0;
+            console.log('Spots left for', game.name, ':', game.spotsLeft);
+        });
 
-        this.playerList$.subscribe(playerList => {
-            this.playerList = playerList
-        })
-
-        if (game && game.numOfPlayers) {
-            const spotsLeft = game.numOfPlayers - (this.playerList)?.length;
-            return spotsLeft >= 0 ? spotsLeft : 0;
-        }
-        return 0;
     }
 
     getPlayerList(gameId: string): Observable<any[]> {
