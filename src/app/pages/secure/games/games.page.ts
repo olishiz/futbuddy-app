@@ -1,26 +1,26 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
 import { IGame } from "../../../models/game.model";
 import { DataService } from "../../../services/data/data.service";
-import { Observable } from "rxjs";
+import { Observable, Subscription } from "rxjs";
 import { AngularFirestore } from "@angular/fire/compat/firestore";
-
-
-const playerData = {
-    playerName: 'John Doe',
-    playerId: 'uid_of_player',
-    timestamp: new Date(),
-};
+import { Auth, user } from "@angular/fire/auth";
+import firebase from "firebase/compat";
+import User = firebase.User;
 
 @Component({
     selector: 'app-games',
     templateUrl: './games.page.html',
     styleUrls: ['./games.page.scss'],
 })
-export class GamesPage implements OnInit {
+export class GamesPage implements OnInit, OnDestroy {
+
+    user$ = user(this.auth);
+    userSubscription: Subscription;
 
     id: string | null = null;
     game$: Observable<IGame>;
+    username: string
 
     game: any;
 
@@ -30,11 +30,20 @@ export class GamesPage implements OnInit {
     constructor(
         private route: ActivatedRoute,
         private dataService: DataService,
-        private firestore: AngularFirestore
+        private firestore: AngularFirestore,
+        private auth: Auth
     ) {
+
+        // Retrieve username from Firebase Auth displayName field
+        this.userSubscription = this.user$.subscribe((aUser: User | null) => {
+            this.username = aUser.displayName
+        })
+
     }
 
     async ngOnInit() {
+
+        // Retrieve params id from url
         this.route.params.subscribe(params => {
             this.id = params['id'];
             console.log('this.id', this.id);
@@ -48,11 +57,11 @@ export class GamesPage implements OnInit {
             console.log('Player List:', playerList);
         });
 
+        // Subscribe and store to variable of player List
         this.playerList$.subscribe(playerList => {
             this.playerList = playerList
             console.log('converted', this.playerList)
         })
-
 
         // Fetch game details
         this.dataService.getGameById(this.id).subscribe(game => {
@@ -63,15 +72,28 @@ export class GamesPage implements OnInit {
     }
 
     async addPlayerToGame(gameId: any) {
-        console.log('join game init', gameId)
+
+        console.log('Game Session Document ID: ', gameId)
+
+        // TODO:: Make payment system gateway here - to finish off the deal.
 
         try {
+
+            // Retrieve game reference object
             const gameRef = this.firestore.collection('games').doc(gameId);
             const playerListRef = gameRef.collection('playerList');
+
+            const playerData = {
+                playerName: this.username,
+                timestamp: new Date(),
+            };
+
             await playerListRef.add(playerData);
-            console.log('successfull add')
+
+            console.log('Successfully add players to the game.')
+
         } catch (error) {
-            console.error('Error adding player to game:', error);
+            console.error('Error adding player to game: ', error);
         }
 
 
@@ -89,6 +111,10 @@ export class GamesPage implements OnInit {
             return spotsLeft >= 0 ? spotsLeft : 0;
         }
         return 0;
+    }
+
+    ngOnDestroy() {
+        this.userSubscription.unsubscribe();
     }
 
 }

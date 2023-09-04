@@ -8,4 +8,7 @@ export interface IGame {
     status: any;
     numOfPlayers: any;
     spotsLeft: any;
+    arenaPhotoUrl: any;
+    formatType: any;
+    floorType: any;
 }

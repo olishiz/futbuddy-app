@@ -16,20 +16,18 @@
         <ion-label color="white">{{ (game$ | async)?.name }}</ion-label>
     </ion-list-header>
 
-    <ion-img src="https://lh3.googleusercontent.com/p/AF1QipPMKO5u_LNy9mgmW5N1EItNOj_tVMKWctBzGvYs=s680-w680-h510"
-             alt="Futsal court">
-    </ion-img>
+    <ion-img src="{{ (game$ | async)?.arenaPhotoUrl }}" alt="Futsal court"></ion-img>
 
     <ion-grid>
         <ion-row>
             <ion-col>
-                <ion-chip color="tertiary">Format: 5v5</ion-chip>
+                <ion-chip color="tertiary">Format: {{ (game$ | async)?.formatType }}</ion-chip>
             </ion-col>
             <ion-col>
                 <ion-chip color="tertiary">Price: {{ (game$ | async)?.price }} </ion-chip>
             </ion-col>
             <ion-col>
-                <ion-chip color="tertiary">Floor: Futsal tiles</ion-chip>
+                <ion-chip color="tertiary">Floor: {{ (game$ | async)?.floorType }}</ion-chip>
             </ion-col>
         </ion-row>
     </ion-grid>
@@ -46,6 +44,14 @@
         <ion-text color="light" style="margin-top: 10px">
             <ion-icon name="calendar-outline"></ion-icon>
             Date: {{ (game$ | async)?.date }}
+            <br>
+        </ion-text>
+    </div>
+
+    <div class="ion-text-center">
+        <ion-text color="light" style="margin-top: 10px">
+            <ion-icon name="time-outline"></ion-icon>
+            Time: {{ (game$ | async)?.time }}
             <br>
         </ion-text>
     </div>
@@ -82,7 +88,8 @@
     <hr style="background: grey">
 
     <div class="ion-text-center">
-        <ion-button (click)="addPlayerToGame(id)">Book Slot</ion-button>
+        <ion-button *ngIf="calculateSpotsLeft() != 0" (click)="addPlayerToGame(id)">Book Slot</ion-button>
+        <ion-button *ngIf="calculateSpotsLeft() == 0" [disabled]="true">Slots Fully Booked</ion-button>
     </div>
 
     <br> <br>

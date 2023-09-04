@@ -6,7 +6,8 @@ import {
     createUserWithEmailAndPassword,
     sendPasswordResetEmail,
     signInWithEmailAndPassword,
-    signOut
+    signOut,
+    updateProfile
 } from "@angular/fire/auth";
 import { ToastService } from "../toast/toast.service";
 import { Observable } from "rxjs";
@@ -78,4 +79,10 @@ export class AuthService {
         }
 
     }
+
+    async updateProfileName(name: string) {
+        await updateProfile(this.auth.currentUser, {displayName: name})
+            .catch((error) => console.log(error))
+    }
+
 }

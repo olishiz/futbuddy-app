@@ -1,25 +1,33 @@
-import { Component, OnInit } from '@angular/core';
-import { DataService } from "../../../services/data/data.service";
-import { IGame } from "../../../models/game.model";
-import { AuthService } from "../../../services/auth/auth.service";
-import { Router } from "@angular/router";
-import { Observable } from "rxjs";
-import { AngularFirestore } from "@angular/fire/compat/firestore";
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { DataService } from '../../../services/data/data.service';
+import { IGame } from '../../../models/game.model';
+import { AuthService } from '../../../services/auth/auth.service';
+import { Router } from '@angular/router';
+import { Observable, Subscription } from 'rxjs';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { Auth, user } from "@angular/fire/auth";
+import firebase from "firebase/compat";
+import User = firebase.User;
 
 @Component({
     selector: 'app-home',
     templateUrl: './home.page.html',
     styleUrls: ['./home.page.scss'],
 })
-export class HomePage implements OnInit {
+export class HomePage implements OnInit, OnDestroy {
+
+    user$ = user(this.auth);
+    userSubscription: Subscription;
 
     games: IGame[] = [];
-    activeGames: IGame[] = []
+    activeGames: IGame[] = [];
 
-    content_loaded: boolean = false;
+    contentLoaded = false;
 
-    playerList: any
+    playerList: any;
     playerList$: Observable<any[]>;
+
+    username: string;
 
     private spotsLeft: number;
 
@@ -27,28 +35,35 @@ export class HomePage implements OnInit {
         private dataService: DataService,
         private authService: AuthService,
         private router: Router,
-        private firestore: AngularFirestore
+        private firestore: AngularFirestore,
+        private auth: Auth,
     ) {
+
+        this.userSubscription = this.user$.subscribe((aUser: User | null) => {
+            console.log('the aUser', aUser);
+            this.username = aUser.displayName
+        })
+
     }
 
     ngOnInit() {
 
         this.dataService.getGames().subscribe((res: IGame[]) => {
-            this.games = res
-            this.activeGames = this.games.filter(game => game.status === 'ACTIVE')
+            this.games = res;
+            this.activeGames = this.games.filter(game => game.status === 'ACTIVE');
 
             // Calculate and set spotsLeft for each game
             this.activeGames.forEach(game => {
                 this.calculateSpotsLeft(game);
             });
 
-            console.log('the games boy', this.games)
-            console.log('the active games boy', this.activeGames)
-        })
+            console.log('the games boy', this.games);
+            console.log('the active games boy', this.activeGames);
+        });
 
         // Fake timeout
         setTimeout(() => {
-            this.content_loaded = true;
+            this.contentLoaded = true;
         }, 2000);
     }
 
@@ -72,5 +87,8 @@ export class HomePage implements OnInit {
         return playerListRef.valueChanges(); // Returns an Observable of player data
     }
 
+    ngOnDestroy() {
+        this.userSubscription.unsubscribe();
+    }
 
 }

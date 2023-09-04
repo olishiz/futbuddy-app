@@ -14,11 +14,8 @@
 <ion-content [fullscreen]="true">
     <ion-header collapse="condense">
         <ion-toolbar>
-            <ion-title size="large">Home</ion-title>
+            <ion-title size="large">Hello, {{ (user$ | async)?.displayName }}</ion-title>
         </ion-toolbar>
-        <!--        <ion-toolbar>-->
-        <!--            <ion-searchbar showCancelButton="focus" placeholder="Company, category, expense ..."></ion-searchbar>-->
-        <!--        </ion-toolbar>-->
     </ion-header>
 
     <div class="ion-padding">
@@ -60,9 +57,7 @@
         <!--        <hr>-->
 
         <ion-card *ngFor="let game of activeGames">
-            <!--            <img alt="Silhouette of mountains" [src]="game.location.image" />-->
-            <img alt="Silhouette of mountains"
-                 src="https://lh3.googleusercontent.com/p/AF1QipPMKO5u_LNy9mgmW5N1EItNOj_tVMKWctBzGvYs=s680-w680-h510"/>
+            <img alt="Silhouette of mountains" src="{{ game.arenaPhotoUrl }}"/>
             <ion-card-header style="padding-bottom: 0">
                 <ion-card-title>{{ game.name }}</ion-card-title>
                 <ion-card-subtitle>
@@ -92,9 +87,10 @@
                     <br>
                 </ion-text>
 
-
                 <br>
-                <ion-button (click)="goToGamePage(game)">Book Slot</ion-button>
+
+                <ion-button *ngIf="game.spotsLeft != 0" (click)="goToGamePage(game)">Book Slot</ion-button>
+                <ion-button *ngIf="game.spotsLeft == 0" [disabled]="true">Slots Fully Booked</ion-button>
 
             </ion-card-content>
         </ion-card>
