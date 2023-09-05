@@ -6,11 +6,11 @@ import firebase from "firebase/compat";
 import User = firebase.User;
 
 @Component({
-    selector: 'app-settings',
-    templateUrl: './settings.page.html',
-    styleUrls: ['./settings.page.scss'],
+    selector: 'app-profile',
+    templateUrl: './profile-page.component.html',
+    styleUrls: ['./profile-page.component.scss'],
 })
-export class SettingsPage implements OnInit, OnDestroy {
+export class ProfilePage implements OnInit, OnDestroy {
 
     user$ = user(this.auth);
     userSubscription: Subscription;

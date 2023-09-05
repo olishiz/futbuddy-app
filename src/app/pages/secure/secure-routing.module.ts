@@ -7,25 +7,37 @@ const routes: Routes = [
         loadChildren: () => import('./../../tabs/tabs.module').then(m => m.TabsPageModule)
     },
     {
-        path: 'styleguide',
-        loadChildren: () => import('./styleguide/styleguide.module').then(m => m.StyleguidePageModule)
+        path: 'profile',
+        loadChildren: () => import('./profile/profile.module').then(m => m.ProfilePageModule)
     },
     {
-        path: 'settings',
-        loadChildren: () => import('./settings/settings.module').then(m => m.SettingsPageModule)
-    },
-    {
-        path: 'settings/profile/edit',
+        path: 'profile/edit',
         loadChildren: () => import('./profile/edit/edit.module').then(m => m.EditPageModule)
     },
+    {
+        path: 'about-us',
+        loadChildren: () => import('./about-us/about-us.module').then(m => m.AboutUsModule)
+    },
+    {
+        path: 'games/:id',
+        loadChildren: () => import('./games/games.module').then(m => m.GamesPageModule)
+    },
+
+
+    // not in used yet
     {
         path: 'payments/detail',
         loadChildren: () => import('./payments/payment-detail/payment-detail.module').then(m => m.PaymentDetailPageModule)
     },
     {
-        path: 'games/:id',
-        loadChildren: () => import('./games/games.module').then(m => m.GamesPageModule)
-    }
+        path: 'styleguide',
+        loadChildren: () => import('./styleguide/styleguide.module').then(m => m.StyleguidePageModule)
+    },  {
+    path: 'payment',
+    loadChildren: () => import('./payment/payment.module').then( m => m.PaymentPageModule)
+  },
+
+
 ];
 
 @NgModule({

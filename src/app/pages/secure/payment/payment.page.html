@@ -1,0 +1,71 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-button (click)="cancel()">
+                Cancel
+            </ion-button>
+        </ion-buttons>
+        <ion-title>
+            Checkout
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <form [formGroup]="paymentForm" (ngSubmit)="onSubmit()">
+
+        <div class="ion-text-center">
+            <ion-chip color="light">Game Details</ion-chip>
+
+            <div class="ion-text-center">
+                <ion-text color="light" style="margin-top: 10px">
+                    <ion-icon name="location"></ion-icon>
+                    Location: {{ this.game.location }}
+                    <br>
+                </ion-text>
+            </div>
+
+            <div class="ion-text-center">
+                <ion-text color="light" style="margin-top: 10px">
+                    <ion-icon name="calendar-outline"></ion-icon>
+                    Date: {{ this.game.date }}
+                    <br>
+                </ion-text>
+            </div>
+
+            <div class="ion-text-center">
+                <ion-text color="light" style="margin-top: 10px">
+                    <ion-icon name="time-outline"></ion-icon>
+                    Time: {{ this.game.time }}
+                    <br>
+                </ion-text>
+            </div>
+
+            <br>
+
+            <ion-chip color="light">Price</ion-chip>
+
+            <div class="ion-text-center">
+                <ion-text color="light" style="margin-top: 10px">
+                    <ion-icon name="cash-outline"></ion-icon>
+                    You will be paying: {{ this.game.price }}
+                    <br>
+                </ion-text>
+            </div>
+
+        </div>
+
+        <div class="ion-text-center" style="margin-top: 20px; display: flex; align-items: center; margin-left: 10%">
+            <ion-checkbox formControlName="agree" color="light" style="margin-right: 8px;"></ion-checkbox>
+            I agree to the terms and conditions
+        </div>
+
+        <div class="ion-text-center" style="margin-top: 20px">
+            <ion-button color="danger" type="submit" [disabled]="!paymentForm.valid">
+                Pay Now
+            </ion-button>
+        </div>
+
+
+    </form>
+</ion-content>

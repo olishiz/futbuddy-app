@@ -1,0 +1,76 @@
+<ion-header collapse="fade" [translucent]="true">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button text="Back" defaultHref="/profile"></ion-back-button>
+        </ion-buttons>
+        <ion-title>
+            About Us
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+    <div class="ion-padding">
+
+        <ion-accordion-group>
+            <ion-accordion value="first">
+                <ion-item slot="header" color="dark">
+                    <ion-label>What is FutBuddy?</ion-label>
+                </ion-item>
+                <div class="ion-padding" slot="content">
+                    FutBuddy is a better way to organise and play football with friends. We bring you payment solutions,
+                    scheduling tools, reminders and more.
+                    Organise and attend your favourite trainings, connect with friends and meet new people - all with
+                    our 1-click solution.
+                </div>
+            </ion-accordion>
+            <ion-accordion value="second">
+                <ion-item slot="header" color="dark">
+                    <ion-label>How do I book a game?</ion-label>
+                </ion-item>
+                <div class="ion-padding custom-spacing" slot="content">
+
+                    <p style="margin-bottom: 15px; font-weight: bold" class="ion-text-center">To book a game: </p>
+
+                    <p style="margin: 5px 5px">1. Navigate to your chosen game. </p>
+                    <p style="margin: 5px 5px">2. Tap “Book Slot”. </p>
+                    <p style="margin: 5px 5px">
+                        3. Choose your method of payment: Stripe. Note that all payments will be processed in MYR.
+                    </p>
+                    <p style="margin: 5px 5px">
+                        4. Follow the instructions from our payment provider to complete the purchase.
+                    </p>
+                    <p style="margin: 5px 5px">
+                        5. Upon successful payment, your first name will appear on the players list and you will receive
+                        a confirmation email with your booking details as well as a receipt of your purchase. Please
+                        allow a couple of minutes for the emails to arrive.
+                    </p>
+                    <p style="margin: 5px 5px">6. Show up and have fun! </p>
+
+                </div>
+            </ion-accordion>
+            <ion-accordion value="third">
+                <ion-item slot="header" color="dark">
+                    <ion-label>Cancellation Policy</ion-label>
+                </ion-item>
+                <div class="ion-padding" slot="content">
+                    Please make sure to cancel your spot at least 24 hours before the game starts. If you cancel within
+                    the 24 hour period, you are not entitled to a refund. To cancel, please send a WhatsApp message to
+                    Oliver <a href="https://wa.me/60168694900">(+60168694900)</a> stating that you would like to cancel your booking slot.
+                </div>
+            </ion-accordion>
+        </ion-accordion-group>
+
+        <!--        <ion-list class="list-custom" lines="full">-->
+        <!--            <ion-item button detail=false>-->
+        <!--                <ion-icon slot="start" color="danger" name="close"></ion-icon>-->
+        <!--                <ion-label color="danger">-->
+        <!--                    <h3>Delete account</h3>-->
+        <!--                </ion-label>-->
+        <!--            </ion-item>-->
+        <!--        </ion-list>-->
+
+    </div>
+
+</ion-content>

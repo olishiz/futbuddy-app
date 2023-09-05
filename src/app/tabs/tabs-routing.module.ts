@@ -28,6 +28,10 @@ const routes: Routes = [
                 path: 'cards',
                 loadChildren: () => import('../pages/secure/cards/cards.module').then(m => m.CardsPageModule)
             },
+            {
+                path: 'profile',
+                loadChildren: () => import('../pages/secure/profile/profile.module').then(m => m.ProfilePageModule)
+            },
         ]
     }
 ];

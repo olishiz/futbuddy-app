@@ -7,36 +7,50 @@ import {
     sendPasswordResetEmail,
     signInWithEmailAndPassword,
     signOut,
-    updateProfile
+    updateProfile,
+    user
 } from "@angular/fire/auth";
 import { ToastService } from "../toast/toast.service";
-import { Observable } from "rxjs";
+import { Observable, Subscription } from "rxjs";
+import firebase from "firebase/compat";
+import User = firebase.User;
 
 @Injectable({
     providedIn: 'root'
 })
 export class AuthService {
 
-    user: Observable<any>;  // Observable to hold user session details
+    user: any;
+    userSubscription: Subscription;
+
+    user$ = user(this.auth);
 
     constructor(
         private router: Router,
         private auth: Auth,
         private toastService: ToastService,
     ) {
+
+        // subscribe to the user auth object
+        this.user = user(this.auth);
+
     }
 
     // Get user session
-    async getSession() {
+    async getSession(): Promise<Observable<User | null>> {
+
+        return this.user
+
 
         // ...
         // put auth session here
         // ...
 
+
         // authState observable will automatically emit the user's session details
         // return this.user.toPromise();
 
-        return false
+        // return false
     }
 
     // Sign in

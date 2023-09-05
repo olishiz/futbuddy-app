@@ -89,10 +89,10 @@ export class EditPage implements OnInit, OnDestroy {
             this.authService.updateProfileName(this.edit_profile_form.get('username').value)
 
             // Display success message and go back
-            this.toastService.presentToast('Success', 'Profile saved', 'top', 'success', 2000);
+            this.toastService.presentToast('Success', 'Username has been saved', 'top', 'success', 2000);
 
-            // Move controller back to settings page
-            this.router.navigateByUrl('/settings', {replaceUrl: true});
+            // Move controller back to profile page
+            this.router.navigateByUrl('/profile', {replaceUrl: true});
 
         } else {
 

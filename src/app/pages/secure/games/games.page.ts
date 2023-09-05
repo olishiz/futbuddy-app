@@ -6,6 +6,8 @@ import { Observable, Subscription } from "rxjs";
 import { AngularFirestore } from "@angular/fire/compat/firestore";
 import { Auth, user } from "@angular/fire/auth";
 import firebase from "firebase/compat";
+import { IonRouterOutlet, ModalController } from "@ionic/angular";
+import { PaymentPage } from "../payment/payment.page";
 import User = firebase.User;
 
 @Component({
@@ -31,7 +33,9 @@ export class GamesPage implements OnInit, OnDestroy {
         private route: ActivatedRoute,
         private dataService: DataService,
         private firestore: AngularFirestore,
-        private auth: Auth
+        private auth: Auth,
+        private modalController: ModalController,
+        private routerOutlet: IonRouterOutlet
     ) {
 
         // Retrieve username from Firebase Auth displayName field
@@ -83,9 +87,12 @@ export class GamesPage implements OnInit, OnDestroy {
             const gameRef = this.firestore.collection('games').doc(gameId);
             const playerListRef = gameRef.collection('playerList');
 
+
+            // TODO:: Have to set paymentStatus == PAID once Stripe payment is released.
             const playerData = {
                 playerName: this.username,
                 timestamp: new Date(),
+                paymentStatus: 'PAID'
             };
 
             await playerListRef.add(playerData);
@@ -115,6 +122,21 @@ export class GamesPage implements OnInit, OnDestroy {
 
     ngOnDestroy() {
         this.userSubscription.unsubscribe();
+    }
+
+    async openCard() {
+
+        // Open filter modal
+        const modal = await this.modalController.create({
+            component: PaymentPage,
+            swipeToClose: true,
+            presentingElement: this.routerOutlet.nativeEl,
+            componentProps: {
+                game: this.game, // Pass your 'game' object here
+            },
+        });
+
+        return await modal.present();
     }
 
 }
