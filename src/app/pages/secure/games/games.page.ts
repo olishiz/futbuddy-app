@@ -29,6 +29,8 @@ export class GamesPage implements OnInit, OnDestroy {
     playerList$: Observable<any[]>;
     playerList: any
 
+    is_modal_open: boolean = false
+
     constructor(
         private route: ActivatedRoute,
         private dataService: DataService,
@@ -126,6 +128,8 @@ export class GamesPage implements OnInit, OnDestroy {
 
     async openCard() {
 
+        this.is_modal_open = true
+
         // Open filter modal
         const modal = await this.modalController.create({
             component: PaymentPage,
@@ -134,6 +138,11 @@ export class GamesPage implements OnInit, OnDestroy {
             componentProps: {
                 game: this.game, // Pass your 'game' object here
             },
+        });
+
+        modal.onDidDismiss().then(() => {
+            // Handle the modal dismissal event
+            this.is_modal_open = false;
         });
 
         return await modal.present();
