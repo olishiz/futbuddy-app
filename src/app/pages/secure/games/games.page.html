@@ -88,14 +88,12 @@
     <hr style="background: grey">
 
     <div class="ion-text-center">
-        <ion-button *ngIf="calculateSpotsLeft() != 0" (click)="addPlayerToGame(id)">Book Slot</ion-button>
 
-        <!-- testing-->
-        <ion-button *ngIf="calculateSpotsLeft() != 0 && !is_modal_open" (click)="openCard()">Book Da Slot</ion-button>
+        <ion-button *ngIf="calculateSpotsLeft() != 0 && !is_modal_open" (click)="openCard()">Book Slot</ion-button>
 
         <ion-button *ngIf="calculateSpotsLeft() != 0 && is_modal_open" (click)="openCard()" [disabled]="true">
             <ion-spinner></ion-spinner>
-            Book Da Slot
+            Book Slot
         </ion-button>
 
         <ion-button *ngIf="calculateSpotsLeft() == 0" [disabled]="true">Slots Fully Booked</ion-button>

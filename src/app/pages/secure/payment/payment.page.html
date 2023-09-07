@@ -12,7 +12,7 @@
 </ion-header>
 
 <ion-content>
-    <form [formGroup]="paymentForm" (ngSubmit)="onSubmit()">
+    <form [formGroup]="paymentForm" (ngSubmit)="addPlayerToGame(this.game.id)">
 
         <div class="ion-text-center">
             <ion-chip color="light">Game Details</ion-chip>
@@ -43,15 +43,50 @@
 
             <br>
 
+            <ion-chip color="light">Add Friends if any</ion-chip>
+
+            <!-- List of friends -->
+            <ion-list *ngFor="let friend of friends; let i = index">
+                <ion-item>
+                    <ion-label position="floating">Friend {{ i + 1 }}</ion-label>
+                    <ion-input [value]="friend.name" (input)="updateFriendName(i, $event.target.value)" name="friendName{{ i }}" placeholder="Input friend name" required></ion-input>
+                    <ion-button fill="clear" color="danger" (click)="removeFriend(i)">
+                        <ion-icon name="close-circle"></ion-icon>
+                        Remove
+                    </ion-button>
+                </ion-item>
+            </ion-list>
+
+            <br>
+
+            <ion-button (click)="addFriendButton()" style="margin-top: 10px;">Add Friend</ion-button>
+
+            <br> <br>
+
             <ion-chip color="light">Price</ion-chip>
 
             <div class="ion-text-center">
                 <ion-text color="light" style="margin-top: 10px">
                     <ion-icon name="cash-outline"></ion-icon>
-                    You will be paying: {{ this.game.price }}
+                    You will be paying: {{ this.game.price }} per person.
                     <br>
                 </ion-text>
             </div>
+
+            <br>
+
+            <div *ngIf="friends.length > 0">
+                <ion-chip color="light">Total Calculated Price</ion-chip>
+
+                <div class="ion-text-center">
+                    <ion-text color="light" style="margin-top: 10px">
+                        <ion-icon name="cash-outline"></ion-icon>
+                        Total calculated price would be: RM{{ this.calculatedFees }} which includes yours as well.
+                        <br>
+                    </ion-text>
+                </div>
+            </div>
+
 
         </div>
 
@@ -61,7 +96,7 @@
         </div>
 
         <div class="ion-text-center" style="margin-top: 20px">
-            <ion-button color="danger" type="submit" [disabled]="!paymentForm.valid" (click)="addPlayerToGame(this.game.id)">
+            <ion-button color="danger" type="submit" [disabled]="!paymentForm.valid">
                 Pay Now
             </ion-button>
         </div>

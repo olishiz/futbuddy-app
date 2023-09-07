@@ -77,37 +77,6 @@ export class GamesPage implements OnInit, OnDestroy {
 
     }
 
-    async addPlayerToGame(gameId: any) {
-
-        console.log('Game Session Document ID: ', gameId)
-
-        // TODO:: Make payment system gateway here - to finish off the deal.
-
-        try {
-
-            // Retrieve game reference object
-            const gameRef = this.firestore.collection('games').doc(gameId);
-            const playerListRef = gameRef.collection('playerList');
-
-
-            // TODO:: Have to set paymentStatus == PAID once Stripe payment is released.
-            const playerData = {
-                playerName: this.username,
-                timestamp: new Date(),
-                paymentStatus: 'PAID'
-            };
-
-            await playerListRef.add(playerData);
-
-            console.log('Successfully add players to the game.')
-
-        } catch (error) {
-            console.error('Error adding player to game: ', error);
-        }
-
-
-    }
-
     getPlayerList(gameId: string): Observable<any[]> {
         const gameRef = this.firestore.collection('games').doc(gameId);
         const playerListRef = gameRef.collection('playerList');
@@ -130,6 +99,8 @@ export class GamesPage implements OnInit, OnDestroy {
 
         this.is_modal_open = true
 
+        const spotsLeft = this.calculateSpotsLeft()
+
         // Open filter modal
         const modal = await this.modalController.create({
             component: PaymentPage,
@@ -137,6 +108,7 @@ export class GamesPage implements OnInit, OnDestroy {
             presentingElement: this.routerOutlet.nativeEl,
             componentProps: {
                 game: this.game, // Pass your 'game' object here
+                spotsLeft: spotsLeft
             },
         });
 
