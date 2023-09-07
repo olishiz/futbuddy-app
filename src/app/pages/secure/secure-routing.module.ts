@@ -32,10 +32,15 @@ const routes: Routes = [
     {
         path: 'styleguide',
         loadChildren: () => import('./styleguide/styleguide.module').then(m => m.StyleguidePageModule)
-    },  {
-    path: 'payment',
-    loadChildren: () => import('./payment/payment.module').then( m => m.PaymentPageModule)
-  },
+    },
+    {
+        path: 'payment',
+        loadChildren: () => import('./payment/payment.module').then(m => m.PaymentPageModule)
+    },
+    {
+        path: 'my-games',
+        loadChildren: () => import('./my-games/my-games.module').then(m => m.MyGamesPageModule)
+    },
 
 
 ];

@@ -36,7 +36,7 @@ const routes = [
     },
     {
         path: 'games/:id',
-        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_services_data_data_service_ts"), __webpack_require__.e("common"), __webpack_require__.e("src_app_pages_secure_games_games_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./games/games.module */ 9094)).then(m => m.GamesPageModule)
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_angular_fire_fesm2015_angular-fire-compat-firestore_js"), __webpack_require__.e("default-src_app_pages_secure_payment_payment_page_ts"), __webpack_require__.e("common"), __webpack_require__.e("src_app_pages_secure_games_games_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./games/games.module */ 9094)).then(m => m.GamesPageModule)
     },
     // not in used yet
     {
@@ -49,7 +49,11 @@ const routes = [
     },
     {
         path: 'payment',
-        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_services_data_data_service_ts"), __webpack_require__.e("common"), __webpack_require__.e("src_app_pages_secure_payment_payment_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./payment/payment.module */ 27902)).then(m => m.PaymentPageModule)
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_angular_fire_fesm2015_angular-fire-compat-firestore_js"), __webpack_require__.e("default-src_app_pages_secure_payment_payment_page_ts"), __webpack_require__.e("src_app_pages_secure_payment_payment_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./payment/payment.module */ 27902)).then(m => m.PaymentPageModule)
+    },
+    {
+        path: 'my-games',
+        loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_pages_secure_my-games_my-games_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./my-games/my-games.module */ 36995)).then(m => m.MyGamesPageModule)
     },
 ];
 let SecureRoutingModule = class SecureRoutingModule {

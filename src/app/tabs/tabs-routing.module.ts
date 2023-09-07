@@ -21,6 +21,10 @@ const routes: Routes = [
                 loadChildren: () => import('../pages/secure/insights/insights.module').then(m => m.InsightsPageModule)
             },
             {
+                path: 'my-games',
+                loadChildren: () => import('../pages/secure/my-games/my-games.module').then(m => m.MyGamesPageModule)
+            },
+            {
                 path: 'payments',
                 loadChildren: () => import('../pages/secure/payments/payments.module').then(m => m.PaymentsPageModule)
             },

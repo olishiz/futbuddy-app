@@ -1,20 +1,6 @@
 "use strict";
 (self["webpackChunkapp"] = self["webpackChunkapp"] || []).push([["common"],{
 
-/***/ 93755:
-/*!******************************************************************************************************************************************************************!*\
-  !*** ./node_modules/@angular-devkit/build-angular/node_modules/@ngtools/webpack/src/loaders/direct-resource.js!./src/app/pages/secure/payment/payment.page.html ***!
-  \******************************************************************************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("<ion-header>\n    <ion-toolbar>\n        <ion-buttons slot=\"start\">\n            <ion-button (click)=\"cancel()\">\n                Cancel\n            </ion-button>\n        </ion-buttons>\n        <ion-title>\n            Checkout\n        </ion-title>\n    </ion-toolbar>\n</ion-header>\n\n<ion-content>\n    <form [formGroup]=\"paymentForm\" (ngSubmit)=\"onSubmit()\">\n\n        <div class=\"ion-text-center\">\n            <ion-chip color=\"light\">Game Details</ion-chip>\n\n            <div class=\"ion-text-center\">\n                <ion-text color=\"light\" style=\"margin-top: 10px\">\n                    <ion-icon name=\"location\"></ion-icon>\n                    Location: {{ this.game.location }}\n                    <br>\n                </ion-text>\n            </div>\n\n            <div class=\"ion-text-center\">\n                <ion-text color=\"light\" style=\"margin-top: 10px\">\n                    <ion-icon name=\"calendar-outline\"></ion-icon>\n                    Date: {{ this.game.date }}\n                    <br>\n                </ion-text>\n            </div>\n\n            <div class=\"ion-text-center\">\n                <ion-text color=\"light\" style=\"margin-top: 10px\">\n                    <ion-icon name=\"time-outline\"></ion-icon>\n                    Time: {{ this.game.time }}\n                    <br>\n                </ion-text>\n            </div>\n\n            <br>\n\n            <ion-chip color=\"light\">Price</ion-chip>\n\n            <div class=\"ion-text-center\">\n                <ion-text color=\"light\" style=\"margin-top: 10px\">\n                    <ion-icon name=\"cash-outline\"></ion-icon>\n                    You will be paying: {{ this.game.price }}\n                    <br>\n                </ion-text>\n            </div>\n\n        </div>\n\n        <div class=\"ion-text-center\" style=\"margin-top: 20px; display: flex; align-items: center; margin-left: 10%\">\n            <ion-checkbox formControlName=\"agree\" color=\"light\" style=\"margin-right: 8px;\"></ion-checkbox>\n            I agree to the terms and conditions\n        </div>\n\n        <div class=\"ion-text-center\" style=\"margin-top: 20px\">\n            <ion-button color=\"danger\" type=\"submit\" [disabled]=\"!paymentForm.valid\" (click)=\"addPlayerToGame(this.game.id)\">\n                Pay Now\n            </ion-button>\n        </div>\n\n\n    </form>\n</ion-content>\n");
-
-/***/ }),
-
 /***/ 95447:
 /*!*********************************************************************!*\
   !*** ./node_modules/@ionic/core/dist/esm/button-active-a4d897e8.js ***!
@@ -1250,134 +1236,49 @@ const createSwipeBackGesture = (el, canStartHandler, onStartHandler, onMoveHandl
 
 /***/ }),
 
-/***/ 88132:
-/*!******************************************************!*\
-  !*** ./src/app/pages/secure/payment/payment.page.ts ***!
-  \******************************************************/
+/***/ 39638:
+/*!***********************************************!*\
+  !*** ./src/app/services/data/data.service.ts ***!
+  \***********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "PaymentPage": () => (/* binding */ PaymentPage)
+/* harmony export */   "DataService": () => (/* binding */ DataService)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! tslib */ 39859);
-/* harmony import */ var _C_Users_user_Desktop_futbuddy_repo_futbuddy_app_node_modules_angular_devkit_build_angular_node_modules_ngtools_webpack_src_loaders_direct_resource_js_payment_page_html__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !./node_modules/@angular-devkit/build-angular/node_modules/@ngtools/webpack/src/loaders/direct-resource.js!./payment.page.html */ 93755);
-/* harmony import */ var _payment_page_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./payment.page.scss */ 28152);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/core */ 14001);
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic/angular */ 91346);
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/forms */ 18346);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/router */ 13252);
-/* harmony import */ var _services_data_data_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../services/data/data.service */ 39638);
-/* harmony import */ var _angular_fire_compat_firestore__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/fire/compat/firestore */ 27091);
-/* harmony import */ var _angular_fire_auth__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/fire/auth */ 75656);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! tslib */ 39859);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 14001);
+/* harmony import */ var _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/fire/firestore */ 44783);
+/* harmony import */ var _angular_fire_compat_firestore__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/fire/compat/firestore */ 27091);
 
 
 
 
-
-
-
-
-
-
-let PaymentPage = class PaymentPage {
-    constructor(modalController, loadingController, formBuilder, navParams, renderer, route, dataService, firestore, auth, routerOutlet) {
-        this.modalController = modalController;
-        this.loadingController = loadingController;
-        this.formBuilder = formBuilder;
-        this.navParams = navParams;
-        this.renderer = renderer;
-        this.route = route;
-        this.dataService = dataService;
+let DataService = class DataService {
+    constructor(firestore, afs) {
         this.firestore = firestore;
-        this.auth = auth;
-        this.routerOutlet = routerOutlet;
-        this.user$ = (0,_angular_fire_auth__WEBPACK_IMPORTED_MODULE_3__.user)(this.auth);
-        this.paymentForm = this.formBuilder.group({
-            agree: [false, _angular_forms__WEBPACK_IMPORTED_MODULE_4__.Validators.requiredTrue], // The checkbox is initially unchecked
-        });
-        // Retrieve username from Firebase Auth displayName field
-        this.userSubscription = this.user$.subscribe((aUser) => {
-            this.username = aUser.displayName;
-        });
+        this.afs = afs;
     }
-    ngOnInit() {
-        return (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__awaiter)(this, void 0, void 0, function* () {
-            // Retrieve the 'game' object passed from the calling component
-            this.game = this.navParams.get('game');
-            console.log('Received game:', this.game);
-        });
+    getGames() {
+        const gamesRef = (0,_angular_fire_firestore__WEBPACK_IMPORTED_MODULE_0__.collection)(this.firestore, 'games');
+        return (0,_angular_fire_firestore__WEBPACK_IMPORTED_MODULE_0__.collectionData)(gamesRef, { idField: 'id' });
     }
-    cancel() {
-        // Dismiss modal
-        this.modalController.dismiss();
-    }
-    onSubmit() {
-        if (this.paymentForm.valid) {
-            // The checkbox is checked, proceed with payment
-            console.log('Payment successful!');
-        }
-        else {
-            // The checkbox is not checked, show an error message
-            console.log('Please agree to the terms and conditions.');
-        }
-    }
-    addPlayerToGame(gameId) {
-        return (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__awaiter)(this, void 0, void 0, function* () {
-            console.log('Game Session Document ID: ', gameId);
-            console.log('THIS GAME ID:::', gameId);
-            debugger;
-            // TODO:: Make payment system gateway here - to finish off the deal.
-            try {
-                // Retrieve game reference object
-                const gameRef = this.firestore.collection('games').doc(gameId);
-                const playerListRef = gameRef.collection('playerList');
-                // TODO:: Have to set paymentStatus == PAID once Stripe payment is released.
-                const playerData = {
-                    playerName: this.username,
-                    timestamp: new Date(),
-                    paymentStatus: 'PAID'
-                };
-                yield playerListRef.add(playerData);
-                console.log('Successfully add players to the game.');
-            }
-            catch (error) {
-                console.error('Error adding player to game: ', error);
-            }
-        });
+    getGameById(id) {
+        const gamesRef = (0,_angular_fire_firestore__WEBPACK_IMPORTED_MODULE_0__.doc)(this.firestore, `games/${id}`);
+        return (0,_angular_fire_firestore__WEBPACK_IMPORTED_MODULE_0__.docData)(gamesRef, { idField: 'id' });
     }
 };
-PaymentPage.ctorParameters = () => [
-    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_6__.ModalController },
-    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_6__.LoadingController },
-    { type: _angular_forms__WEBPACK_IMPORTED_MODULE_4__.FormBuilder },
-    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_6__.NavParams },
-    { type: _angular_core__WEBPACK_IMPORTED_MODULE_7__.Renderer2 },
-    { type: _angular_router__WEBPACK_IMPORTED_MODULE_8__.ActivatedRoute },
-    { type: _services_data_data_service__WEBPACK_IMPORTED_MODULE_2__.DataService },
-    { type: _angular_fire_compat_firestore__WEBPACK_IMPORTED_MODULE_9__.AngularFirestore },
-    { type: _angular_fire_auth__WEBPACK_IMPORTED_MODULE_3__.Auth },
-    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_6__.IonRouterOutlet }
+DataService.ctorParameters = () => [
+    { type: _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_0__.Firestore },
+    { type: _angular_fire_compat_firestore__WEBPACK_IMPORTED_MODULE_1__.AngularFirestore }
 ];
-PaymentPage = (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__decorate)([
-    (0,_angular_core__WEBPACK_IMPORTED_MODULE_7__.Component)({
-        selector: 'app-payment',
-        template: _C_Users_user_Desktop_futbuddy_repo_futbuddy_app_node_modules_angular_devkit_build_angular_node_modules_ngtools_webpack_src_loaders_direct_resource_js_payment_page_html__WEBPACK_IMPORTED_MODULE_0__["default"],
-        styles: [_payment_page_scss__WEBPACK_IMPORTED_MODULE_1__]
+DataService = (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_3__.Injectable)({
+        providedIn: 'root'
     })
-], PaymentPage);
+], DataService);
 
 
-
-/***/ }),
-
-/***/ 28152:
-/*!********************************************************!*\
-  !*** ./src/app/pages/secure/payment/payment.page.scss ***!
-  \********************************************************/
-/***/ ((module) => {
-
-module.exports = "ion-checkbox {\n  --size: 25px;\n  --checkbox-background-checked: #6815ec;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInBheW1lbnQucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsWUFBQTtFQUNBLHNDQUFBO0FBQ0YiLCJmaWxlIjoicGF5bWVudC5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJpb24tY2hlY2tib3gge1xyXG4gIC0tc2l6ZTogMjVweDtcclxuICAtLWNoZWNrYm94LWJhY2tncm91bmQtY2hlY2tlZDogIzY4MTVlYztcclxufVxyXG5cclxuLy9pb24tY2hlY2tib3g6OnBhcnQoY29udGFpbmVyKSB7XHJcbi8vICBib3JkZXItcmFkaXVzOiA2cHg7XHJcbi8vICBib3JkZXI6IDJweCBzb2xpZCAjNjgxNWVjO1xyXG4vL31cclxuIl19 */";
 
 /***/ })
 

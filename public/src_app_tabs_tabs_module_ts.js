@@ -11,7 +11,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("<ion-tabs>\r\n\r\n    <ion-tab-bar slot=\"bottom\">\r\n\r\n        <ion-tab-button tab=\"home\">\r\n            <ion-icon name=\"home\"></ion-icon>\r\n            <ion-label>Home</ion-label>\r\n        </ion-tab-button>\r\n\r\n        <ion-tab-button tab=\"profile\">\r\n            <ion-icon name=\"person-outline\"></ion-icon>\r\n            <ion-label>Profile</ion-label>\r\n        </ion-tab-button>\r\n\r\n        <!-- Placeholder for fab button -->\r\n        <!--    <ion-tab-button class=\"ion-tab-button-placeholder\">-->\r\n        <!--    </ion-tab-button>-->\r\n\r\n        <!--    <ion-tab-button tab=\"payments\">-->\r\n        <!--      <ion-icon name=\"swap-horizontal\"></ion-icon>-->\r\n        <!--      <ion-label>Payments</ion-label>-->\r\n        <!--    </ion-tab-button>-->\r\n\r\n        <!--    <ion-tab-button tab=\"cards\">-->\r\n        <!--      <ion-icon name=\"card\"></ion-icon>-->\r\n        <!--      <ion-label>Cards</ion-label>-->\r\n        <!--    </ion-tab-button>-->\r\n\r\n    </ion-tab-bar>\r\n\r\n    <!--  <ion-fab class=\"ion-fab-custom\" vertical=\"bottom\" horizontal=\"center\" slot=\"fixed\" (click)=\"selectAction()\">-->\r\n    <!--    <ion-fab-button>-->\r\n    <!--      <ion-icon name=\"add\"></ion-icon>-->\r\n    <!--    </ion-fab-button>-->\r\n    <!--  </ion-fab>-->\r\n\r\n</ion-tabs>\r\n");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("<ion-tabs>\r\n\r\n    <ion-tab-bar slot=\"bottom\">\r\n\r\n        <ion-tab-button tab=\"home\">\r\n            <ion-icon name=\"home\"></ion-icon>\r\n            <ion-label>Home</ion-label>\r\n        </ion-tab-button>\r\n\r\n        <ion-tab-button tab=\"my-games\">\r\n            <ion-icon name=\"football\"></ion-icon>\r\n            <ion-label>My Games</ion-label>\r\n        </ion-tab-button>\r\n\r\n        <ion-tab-button tab=\"profile\">\r\n            <ion-icon name=\"person-outline\"></ion-icon>\r\n            <ion-label>Profile</ion-label>\r\n        </ion-tab-button>\r\n\r\n        <!-- Placeholder for fab button -->\r\n        <!--    <ion-tab-button class=\"ion-tab-button-placeholder\">-->\r\n        <!--    </ion-tab-button>-->\r\n\r\n\r\n\r\n            <ion-tab-button tab=\"cards\">\r\n              <ion-icon name=\"card\"></ion-icon>\r\n              <ion-label>Cards</ion-label>\r\n            </ion-tab-button>\r\n\r\n    </ion-tab-bar>\r\n\r\n    <!--  <ion-fab class=\"ion-fab-custom\" vertical=\"bottom\" horizontal=\"center\" slot=\"fixed\" (click)=\"selectAction()\">-->\r\n    <!--    <ion-fab-button>-->\r\n    <!--      <ion-icon name=\"add\"></ion-icon>-->\r\n    <!--    </ion-fab-button>-->\r\n    <!--  </ion-fab>-->\r\n\r\n</ion-tabs>\r\n");
 
 /***/ }),
 
@@ -40,7 +40,7 @@ const routes = [
         children: [
             {
                 path: 'home',
-                loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_services_data_data_service_ts"), __webpack_require__.e("src_app_pages_secure_home_home_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ../pages/secure/home/home.module */ 71634)).then(m => m.HomePageModule)
+                loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_angular_fire_fesm2015_angular-fire-compat-firestore_js"), __webpack_require__.e("common"), __webpack_require__.e("src_app_pages_secure_home_home_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ../pages/secure/home/home.module */ 71634)).then(m => m.HomePageModule)
             },
             {
                 path: '',
@@ -50,6 +50,10 @@ const routes = [
             {
                 path: 'insights',
                 loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_pages_secure_insights_insights_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ../pages/secure/insights/insights.module */ 49080)).then(m => m.InsightsPageModule)
+            },
+            {
+                path: 'my-games',
+                loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_pages_secure_my-games_my-games_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ../pages/secure/my-games/my-games.module */ 36995)).then(m => m.MyGamesPageModule)
             },
             {
                 path: 'payments',
