@@ -63,32 +63,38 @@ export class SignupPage implements OnInit {
                 spinner: 'crescent'
             });
 
-            await loading.present();
+            try {
+                await loading.present();
 
-            // Sign up with Firebase Authentication
-            const user = await this.authService.signUp(this.signup_form.get('email')?.value, this.signup_form.get('password')?.value);
+                // Sign up with Firebase Authentication
+                const userCredential = await this.authService.signUp(this.signup_form.get('email')?.value, this.signup_form.get('password')?.value);
 
-            // Constructing userObject to be used
-            const userObject: IUser = {
-                name: this.signup_form.get('name')?.value,
-                email: this.signup_form.get('email')?.value,
-                password: this.signup_form.get('password')?.value,
-            };
+                // Constructing userObject to be used
+                const userObject: IUser = {
+                    uid: userCredential.user.uid,
+                    name: this.signup_form.get('name')?.value,
+                    email: this.signup_form.get('email')?.value,
+                    password: this.signup_form.get('password')?.value,
+                };
 
-            // Update Profile Name into Firebase Auth object
-            await this.authService.updateProfileName(userObject.name)
+                // Update Profile Name into Firebase Auth object
+                await this.authService.updateProfileName(userObject.name)
 
-            // adding userObject into Firestore database collection named 'users'
-            const userRef = collection(this.firestore, 'users')
-            await addDoc(userRef, userObject)
+                // adding userObject into Firestore database collection named 'users'
+                const userRef = collection(this.firestore, 'users')
+                await addDoc(userRef, userObject)
 
-            await loading.dismiss();
+                await loading.dismiss();
 
-            // Success messages + routing
-            if (user) {
-                await this.toastService.presentToast(`Welcome ${userObject.name}!`, 'Successful sign up', 'top', 'success', 2000);
-                await this.router.navigateByUrl('/home', {replaceUrl: true});
+                // Success messages + routing
+                if (userCredential) {
+                    await this.toastService.presentToast(`Welcome ${userObject.name}!`, 'Successful sign up', 'top', 'success', 2000);
+                    await this.router.navigateByUrl('/home', {replaceUrl: true});
+                }
+            } catch (error) {
+                await loading.dismiss();
             }
+
 
         }
 

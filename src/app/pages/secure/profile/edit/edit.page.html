@@ -44,6 +44,17 @@
 
         </form>
 
+        <hr class="hr-medium">
+
+        <ion-list class="list-custom" lines="full" (click)="deleteAccount()">
+            <ion-item button detail=false>
+                <ion-icon slot="start" color="danger" name="trash-outline"></ion-icon>
+                <ion-label color="danger">
+                    <h3>Delete Account</h3>
+                </ion-label>
+            </ion-item>
+        </ion-list>
+
     </div>
 
 </ion-content>
