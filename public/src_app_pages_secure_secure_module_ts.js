@@ -28,7 +28,7 @@ const routes = [
     },
     {
         path: 'profile/edit',
-        loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_pages_secure_profile_edit_edit_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./profile/edit/edit.module */ 48228)).then(m => m.EditPageModule)
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_angular_fire_fesm2015_angular-fire-compat-firestore_js"), __webpack_require__.e("src_app_pages_secure_profile_edit_edit_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./profile/edit/edit.module */ 48228)).then(m => m.EditPageModule)
     },
     {
         path: 'about-us',

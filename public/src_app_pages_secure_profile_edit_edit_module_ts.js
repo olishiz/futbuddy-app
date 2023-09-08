@@ -11,7 +11,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("<ion-header collapse=\"fade\" [translucent]=\"true\">\r\n    <ion-toolbar>\r\n        <ion-buttons slot=\"start\">\r\n            <ion-back-button text=\"Back\" defaultHref=\"/profile\"></ion-back-button>\r\n        </ion-buttons>\r\n        <ion-title>\r\n            Profile\r\n        </ion-title>\r\n    </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content [fullscreen]=\"true\">\r\n\r\n    <div class=\"hero hero-light-gradient\">\r\n        <ion-avatar>\r\n            <ion-icon class=\"avatar-icon-placeholder\" name=\"person-circle\" color=\"tertiary\">\r\n            </ion-icon>\r\n        </ion-avatar>\r\n        <ion-button class=\"ion-button-small\" color=\"primary\" fill=\"clear\" (click)=\"updateProfilePicture()\">\r\n            Update profile picture\r\n        </ion-button>\r\n    </div>\r\n\r\n    <div class=\"ion-padding\">\r\n\r\n        <form class=\"form-default\" [formGroup]=\"edit_profile_form\" (submit)=\"submit()\">\r\n\r\n            <ion-list class=\"item-card-list\" lines=\"none\">\r\n                <ion-item>\r\n                    <ion-label color=\"tertiary\" position=\"stacked\">Name</ion-label>\r\n                    <ion-input formControlName=\"username\" placeholder=\"Name\" [ngModel]=\"username\"></ion-input>\r\n                </ion-item>\r\n            </ion-list>\r\n\r\n            <p class=\"list-description\">Info: Upon clicking save, username will be changed.</p>\r\n\r\n            <br>\r\n\r\n            <div class=\"ion-text-center\">\r\n                <ion-button expand=\"block\" type=\"submit\" shape=\"round\">\r\n                    Save\r\n                </ion-button>\r\n            </div>\r\n\r\n        </form>\r\n\r\n    </div>\r\n\r\n</ion-content>\r\n");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("<ion-header collapse=\"fade\" [translucent]=\"true\">\r\n    <ion-toolbar>\r\n        <ion-buttons slot=\"start\">\r\n            <ion-back-button text=\"Back\" defaultHref=\"/profile\"></ion-back-button>\r\n        </ion-buttons>\r\n        <ion-title>\r\n            Profile\r\n        </ion-title>\r\n    </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content [fullscreen]=\"true\">\r\n\r\n    <div class=\"hero hero-light-gradient\">\r\n        <ion-avatar>\r\n            <ion-icon class=\"avatar-icon-placeholder\" name=\"person-circle\" color=\"tertiary\">\r\n            </ion-icon>\r\n        </ion-avatar>\r\n        <ion-button class=\"ion-button-small\" color=\"primary\" fill=\"clear\" (click)=\"updateProfilePicture()\">\r\n            Update profile picture\r\n        </ion-button>\r\n    </div>\r\n\r\n    <div class=\"ion-padding\">\r\n\r\n        <form class=\"form-default\" [formGroup]=\"edit_profile_form\" (submit)=\"submit()\">\r\n\r\n            <ion-list class=\"item-card-list\" lines=\"none\">\r\n                <ion-item>\r\n                    <ion-label color=\"tertiary\" position=\"stacked\">Name</ion-label>\r\n                    <ion-input formControlName=\"username\" placeholder=\"Name\" [ngModel]=\"username\"></ion-input>\r\n                </ion-item>\r\n            </ion-list>\r\n\r\n            <p class=\"list-description\">Info: Upon clicking save, username will be changed.</p>\r\n\r\n            <br>\r\n\r\n            <div class=\"ion-text-center\">\r\n                <ion-button expand=\"block\" type=\"submit\" shape=\"round\">\r\n                    Save\r\n                </ion-button>\r\n            </div>\r\n\r\n        </form>\r\n\r\n        <hr class=\"hr-medium\">\r\n\r\n        <ion-list class=\"list-custom\" lines=\"full\" (click)=\"deleteAccount()\">\r\n            <ion-item button detail=false>\r\n                <ion-icon slot=\"start\" color=\"danger\" name=\"trash-outline\"></ion-icon>\r\n                <ion-label color=\"danger\">\r\n                    <h3>Delete Account</h3>\r\n                </ion-label>\r\n            </ion-item>\r\n        </ion-list>\r\n\r\n    </div>\r\n\r\n</ion-content>\r\n");
 
 /***/ }),
 
@@ -108,13 +108,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! tslib */ 39859);
 /* harmony import */ var _C_Users_user_Desktop_futbuddy_repo_futbuddy_app_node_modules_angular_devkit_build_angular_node_modules_ngtools_webpack_src_loaders_direct_resource_js_edit_page_html__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !./node_modules/@angular-devkit/build-angular/node_modules/@ngtools/webpack/src/loaders/direct-resource.js!./edit.page.html */ 94389);
 /* harmony import */ var _edit_page_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./edit.page.scss */ 24230);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/core */ 14001);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @angular/core */ 14001);
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/forms */ 18346);
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @ionic/angular */ 91346);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @ionic/angular */ 91346);
 /* harmony import */ var src_app_services_toast_toast_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/toast/toast.service */ 84746);
 /* harmony import */ var _services_auth_auth_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../services/auth/auth.service */ 68927);
 /* harmony import */ var _angular_fire_auth__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/fire/auth */ 75656);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/router */ 13252);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/router */ 13252);
+/* harmony import */ var _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/fire/firestore */ 44783);
+/* harmony import */ var _angular_fire_compat_firestore__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/fire/compat/firestore */ 27091);
+
+
 
 
 
@@ -126,7 +130,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let EditPage = class EditPage {
-    constructor(formBuilder, toastService, navController, actionSheetController, authService, auth, router) {
+    constructor(formBuilder, toastService, navController, actionSheetController, authService, auth, router, alertController, firestore, afs) {
         this.formBuilder = formBuilder;
         this.toastService = toastService;
         this.navController = navController;
@@ -134,6 +138,9 @@ let EditPage = class EditPage {
         this.authService = authService;
         this.auth = auth;
         this.router = router;
+        this.alertController = alertController;
+        this.firestore = firestore;
+        this.afs = afs;
         this.user$ = (0,_angular_fire_auth__WEBPACK_IMPORTED_MODULE_4__.user)(this.auth);
         this.submit_attempt = false;
         this.userSubscription = this.user$.subscribe((aUser) => {
@@ -196,18 +203,80 @@ let EditPage = class EditPage {
     ngOnDestroy() {
         this.userSubscription.unsubscribe();
     }
+    deleteAccount() {
+        return (0,tslib__WEBPACK_IMPORTED_MODULE_6__.__awaiter)(this, void 0, void 0, function* () {
+            try {
+                const alert = yield this.alertController.create({
+                    cssClass: 'custom-alert',
+                    header: 'Delete this account permanently?',
+                    message: 'This action cannot be undone.',
+                    buttons: [
+                        {
+                            text: 'Delete account',
+                            cssClass: 'danger',
+                            handler: () => (0,tslib__WEBPACK_IMPORTED_MODULE_6__.__awaiter)(this, void 0, void 0, function* () {
+                                // Deletion of Firebase Auth Object - which is the current user
+                                const auth = (0,_angular_fire_auth__WEBPACK_IMPORTED_MODULE_4__.getAuth)();
+                                const user = auth.currentUser;
+                                // Delete username in Firestore Database 'users' collection
+                                // Get a reference to the users collection, then the document, and valueChanges to retrieve the document id.
+                                const userDocument$ = this.afs.collection('users', ref => ref.where('uid', '==', user.uid)).valueChanges({ idField: 'id' });
+                                // After retrieval of collections, then only observable has to be subscribed in order to retrieve values
+                                userDocument$.subscribe((userDoc) => {
+                                    // If there is data related
+                                    if (userDoc.length > 0) {
+                                        // Assign userData with first item
+                                        const userData = userDoc[0];
+                                        // Deletes operation on the 'users/{document_id}' of the selected user
+                                        this.deleteUser(userData.id);
+                                        console.log('Successfully deleted the user in Angular Firestore: ', userData.id);
+                                    }
+                                });
+                                // Delete auth user record in Authentication tab - Firebase
+                                (0,_angular_fire_auth__WEBPACK_IMPORTED_MODULE_4__.deleteUser)(user).then(() => (0,tslib__WEBPACK_IMPORTED_MODULE_6__.__awaiter)(this, void 0, void 0, function* () {
+                                    // User deleted.
+                                    yield this.toastService.presentToast('Success', 'User successfully deleted', 'top', 'success', 2000);
+                                    yield this.router.navigateByUrl('/signin', { replaceUrl: true });
+                                })).catch((error) => (0,tslib__WEBPACK_IMPORTED_MODULE_6__.__awaiter)(this, void 0, void 0, function* () {
+                                    // An error occurred
+                                    yield this.toastService.presentToast('Error', `Message: ${error}`, 'top', 'danger', 2000);
+                                }));
+                            })
+                        },
+                        {
+                            text: 'Cancel',
+                            role: 'cancel',
+                            cssClass: 'cancel'
+                        }
+                    ]
+                });
+                yield alert.present();
+            }
+            catch (ex) {
+                console.log("Error: ", ex);
+                yield this.toastService.presentToast('Error', `Message: ${ex}`, 'top', 'danger', 2000);
+            }
+        });
+    }
+    deleteUser(userId) {
+        const userRef = (0,_angular_fire_firestore__WEBPACK_IMPORTED_MODULE_7__.doc)(this.firestore, `users/${userId}`);
+        return (0,_angular_fire_firestore__WEBPACK_IMPORTED_MODULE_7__.deleteDoc)(userRef);
+    }
 };
 EditPage.ctorParameters = () => [
     { type: _angular_forms__WEBPACK_IMPORTED_MODULE_5__.FormBuilder },
     { type: src_app_services_toast_toast_service__WEBPACK_IMPORTED_MODULE_2__.ToastService },
-    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_7__.NavController },
-    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_7__.ActionSheetController },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_8__.NavController },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_8__.ActionSheetController },
     { type: _services_auth_auth_service__WEBPACK_IMPORTED_MODULE_3__.AuthService },
     { type: _angular_fire_auth__WEBPACK_IMPORTED_MODULE_4__.Auth },
-    { type: _angular_router__WEBPACK_IMPORTED_MODULE_8__.Router }
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_9__.Router },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_8__.AlertController },
+    { type: _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_7__.Firestore },
+    { type: _angular_fire_compat_firestore__WEBPACK_IMPORTED_MODULE_10__.AngularFirestore }
 ];
 EditPage = (0,tslib__WEBPACK_IMPORTED_MODULE_6__.__decorate)([
-    (0,_angular_core__WEBPACK_IMPORTED_MODULE_9__.Component)({
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_11__.Component)({
         selector: 'app-edit',
         template: _C_Users_user_Desktop_futbuddy_repo_futbuddy_app_node_modules_angular_devkit_build_angular_node_modules_ngtools_webpack_src_loaders_direct_resource_js_edit_page_html__WEBPACK_IMPORTED_MODULE_0__["default"],
         styles: [_edit_page_scss__WEBPACK_IMPORTED_MODULE_1__]

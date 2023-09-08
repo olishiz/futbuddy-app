@@ -11,7 +11,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("<ion-header>\r\n    <ion-toolbar class=\"ion-no-border\">\r\n        <ion-buttons slot=\"start\">\r\n            <ion-back-button text=\"Sign in\" defaultHref=\"/signin\"></ion-back-button>\r\n        </ion-buttons>\r\n    </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n\r\n    <div class=\"ion-padding ion-full-height ion-flex ion-flex-center\">\r\n\r\n        <div class=\"logo-container\">\r\n            <h1 class=\"logo-placeholder\">FutBuddy</h1>\r\n            <p>Sign up to enjoy all of our cool features</p>\r\n        </div>\r\n\r\n        <form class=\"form-default\" [formGroup]=\"signup_form\" (submit)=\"signUp()\">\r\n\r\n            <ion-list class=\"item-card-list\" lines=\"none\">\r\n\r\n                <ion-item>\r\n                    <ion-label color=\"tertiary\" position=\"stacked\">Name</ion-label>\r\n                    <ion-input formControlName=\"name\" type=\"text\" autocomplete=\"off\"\r\n                               placeholder=\"Your name\"></ion-input>\r\n                </ion-item>\r\n\r\n                <ion-item>\r\n                    <ion-label color=\"tertiary\" position=\"stacked\">Email</ion-label>\r\n                    <ion-input formControlName=\"email\" type=\"email\" autocomplete=\"off\"\r\n                               placeholder=\"Your email address\"></ion-input>\r\n                </ion-item>\r\n\r\n                <ion-item class=\"ion-margin-top-small\">\r\n                    <ion-label color=\"tertiary\" position=\"stacked\">Password</ion-label>\r\n                    <ion-input formControlName=\"password\" type=\"password\" placeholder=\"Your password\"></ion-input>\r\n                </ion-item>\r\n\r\n            </ion-list>\r\n\r\n            <ion-button class=\"ion-margin-top\" type=\"submit\" expand=\"block\" color=\"primary\">\r\n                Sign up\r\n            </ion-button>\r\n        </form>\r\n\r\n        <div class=\"ion-text-center ion-margin-top\">\r\n            <ion-text color=\"medium\">\r\n                <small>&copy; {{current_year}} FutBuddy</small>\r\n            </ion-text>\r\n        </div>\r\n\r\n    </div>\r\n\r\n</ion-content>\r\n");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("<ion-header>\r\n    <ion-toolbar class=\"ion-no-border\">\r\n        <ion-buttons slot=\"start\">\r\n            <ion-back-button text=\"Sign in\" defaultHref=\"/signin\"></ion-back-button>\r\n        </ion-buttons>\r\n    </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n\r\n    <div class=\"ion-padding ion-full-height ion-flex ion-flex-center\">\r\n\r\n        <div class=\"logo-container\">\r\n            <h1 class=\"logo-placeholder\">FutBuddy</h1>\r\n            <p>Sign up to enjoy all of our cool features</p>\r\n        </div>\r\n\r\n        <form class=\"form-default\" [formGroup]=\"signup_form\" (submit)=\"signUp()\">\r\n\r\n            <ion-list class=\"item-card-list\" lines=\"none\">\r\n\r\n                <ion-item>\r\n                    <ion-label color=\"tertiary\" position=\"stacked\">Name</ion-label>\r\n                    <ion-input formControlName=\"name\" type=\"text\" autocomplete=\"off\"\r\n                               placeholder=\"Your name\"></ion-input>\r\n                </ion-item>\r\n\r\n                <ion-item>\r\n                    <ion-label color=\"tertiary\" position=\"stacked\">Email</ion-label>\r\n                    <ion-input formControlName=\"email\" type=\"email\" autocomplete=\"off\"\r\n                               placeholder=\"Your email address\"></ion-input>\r\n                </ion-item>\r\n\r\n                <ion-item class=\"ion-margin-top-small\">\r\n                    <ion-label color=\"tertiary\" position=\"stacked\">Password</ion-label>\r\n                    <ion-input formControlName=\"password\" type=\"password\" placeholder=\"Your password\"></ion-input>\r\n                </ion-item>\r\n\r\n            </ion-list>\r\n\r\n            <ion-button class=\"ion-margin-top\" type=\"submit\" expand=\"block\" color=\"primary\">\r\n                Sign up\r\n            </ion-button>\r\n        </form>\r\n\r\n        <div class=\"ion-text-center ion-margin-top\">\r\n\r\n            <ion-text color=\"medium\">\r\n                <small>By signing up to create an account, I accept FutBuddy's\r\n                    <a href=\"https://docs.google.com/document/d/176yd1FKoLXZYo448uO8-zss47EQ9ljuaX756M-IAObY/edit?usp=sharing\" target=\"_blank\">\r\n                        Terms & Conditions\r\n                    </a>\r\n                    and\r\n                    <a href=\"https://docs.google.com/document/d/1rnCh_X1zBIJcypzwh3G2axpfBqYirPAoKM2uXfoGQrg/edit?usp=sharing\" target=\"_blank\">\r\n                        Privacy Policy\r\n                    </a>\r\n                </small>\r\n            </ion-text>\r\n\r\n            <br>\r\n\r\n            <ion-text color=\"medium\">\r\n                <small>&copy; {{current_year}} FutBuddy</small>\r\n            </ion-text>\r\n        </div>\r\n\r\n    </div>\r\n\r\n</ion-content>\r\n");
 
 /***/ }),
 
@@ -163,25 +163,31 @@ let SignupPage = class SignupPage {
                     message: '<p>Signing up...</p><span>Please be patient.</span>',
                     spinner: 'crescent'
                 });
-                yield loading.present();
-                // Sign up with Firebase Authentication
-                const user = yield this.authService.signUp((_a = this.signup_form.get('email')) === null || _a === void 0 ? void 0 : _a.value, (_b = this.signup_form.get('password')) === null || _b === void 0 ? void 0 : _b.value);
-                // Constructing userObject to be used
-                const userObject = {
-                    name: (_c = this.signup_form.get('name')) === null || _c === void 0 ? void 0 : _c.value,
-                    email: (_d = this.signup_form.get('email')) === null || _d === void 0 ? void 0 : _d.value,
-                    password: (_e = this.signup_form.get('password')) === null || _e === void 0 ? void 0 : _e.value,
-                };
-                // Update Profile Name into Firebase Auth object
-                yield this.authService.updateProfileName(userObject.name);
-                // adding userObject into Firestore database collection named 'users'
-                const userRef = (0,_angular_fire_firestore__WEBPACK_IMPORTED_MODULE_5__.collection)(this.firestore, 'users');
-                yield (0,_angular_fire_firestore__WEBPACK_IMPORTED_MODULE_5__.addDoc)(userRef, userObject);
-                yield loading.dismiss();
-                // Success messages + routing
-                if (user) {
-                    yield this.toastService.presentToast(`Welcome ${userObject.name}!`, 'Successful sign up', 'top', 'success', 2000);
-                    yield this.router.navigateByUrl('/home', { replaceUrl: true });
+                try {
+                    yield loading.present();
+                    // Sign up with Firebase Authentication
+                    const userCredential = yield this.authService.signUp((_a = this.signup_form.get('email')) === null || _a === void 0 ? void 0 : _a.value, (_b = this.signup_form.get('password')) === null || _b === void 0 ? void 0 : _b.value);
+                    // Constructing userObject to be used
+                    const userObject = {
+                        uid: userCredential.user.uid,
+                        name: (_c = this.signup_form.get('name')) === null || _c === void 0 ? void 0 : _c.value,
+                        email: (_d = this.signup_form.get('email')) === null || _d === void 0 ? void 0 : _d.value,
+                        password: (_e = this.signup_form.get('password')) === null || _e === void 0 ? void 0 : _e.value,
+                    };
+                    // Update Profile Name into Firebase Auth object
+                    yield this.authService.updateProfileName(userObject.name);
+                    // adding userObject into Firestore database collection named 'users'
+                    const userRef = (0,_angular_fire_firestore__WEBPACK_IMPORTED_MODULE_5__.collection)(this.firestore, 'users');
+                    yield (0,_angular_fire_firestore__WEBPACK_IMPORTED_MODULE_5__.addDoc)(userRef, userObject);
+                    yield loading.dismiss();
+                    // Success messages + routing
+                    if (userCredential) {
+                        yield this.toastService.presentToast(`Welcome ${userObject.name}!`, 'Successful sign up', 'top', 'success', 2000);
+                        yield this.router.navigateByUrl('/home', { replaceUrl: true });
+                    }
+                }
+                catch (error) {
+                    yield loading.dismiss();
                 }
             }
         });
