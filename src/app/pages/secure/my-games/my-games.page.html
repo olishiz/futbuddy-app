@@ -1,11 +1,23 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>my-games</ion-title>
+    <ion-title>Upload Page</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <div class="ion-padding">
+    <h2>Upload Image to Firebase Storage</h2>
+    <p>Select an image and then click the "Upload" button to upload it to Firebase Storage.</p>
 
-  dogafiosjdioujasiodjasiodjsaiodhjoasj
+    <input type="file" (change)="onImageChange($event)">
 
+    <!-- Preview selected image -->
+    <img *ngIf="selectedImage" [src]="selectedImage" alt="Selected Image" width="100%">
+
+    <!-- Progress Bar -->
+    <ion-progress-bar *ngIf="uploadPercent | async as percent" value="{{ percent / 100 }}"></ion-progress-bar>
+
+    <!-- Upload Button -->
+    <ion-button expand="full" (click)="uploadImage()">Upload to Firebase</ion-button>
+  </div>
 </ion-content>
