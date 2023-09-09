@@ -9,16 +9,13 @@ import { AppComponent } from './app.component';
 
 // NgCharts
 import { NgChartsModule } from 'ng2-charts';
-import { getApp, initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { ScreenTrackingService, UserTrackingService } from '@angular/fire/analytics';
 import { getAuth, provideAuth } from '@angular/fire/auth';
 import { getDatabase, provideDatabase } from '@angular/fire/database';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { getFunctions, provideFunctions } from '@angular/fire/functions';
-import { getMessaging, provideMessaging } from '@angular/fire/messaging';
-import { getPerformance, providePerformance } from '@angular/fire/performance';
-import { getRemoteConfig, provideRemoteConfig } from '@angular/fire/remote-config';
 import { getStorage, provideStorage } from '@angular/fire/storage';
 
 
@@ -26,7 +23,7 @@ import { getStorage, provideStorage } from '@angular/fire/storage';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { FIREBASE_OPTIONS } from '@angular/fire/compat';
-import { AngularFireStorageModule, BUCKET } from "@angular/fire/compat/storage";
+import { BUCKET } from "@angular/fire/compat/storage";
 
 @NgModule({
     declarations: [AppComponent],
@@ -42,11 +39,7 @@ import { AngularFireStorageModule, BUCKET } from "@angular/fire/compat/storage";
         provideDatabase(() => getDatabase()),
         provideFirestore(() => getFirestore()),
         provideFunctions(() => getFunctions()),
-        provideMessaging(() => getMessaging()),
-        providePerformance(() => getPerformance()),
-        provideRemoteConfig(() => getRemoteConfig()),
-        provideStorage(() => getStorage(getApp())),
-        AngularFireStorageModule
+        provideStorage(() => getStorage()),
     ],
     providers: [
         {

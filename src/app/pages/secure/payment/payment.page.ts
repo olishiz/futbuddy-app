@@ -8,7 +8,6 @@ import firebase from "firebase/compat";
 import { ToastService } from "../../../services/toast/toast.service";
 import { QrCodePage } from "../qr-code/qr-code.page";
 import { FileUpload } from "../../../models/file-upload.model";
-import 'firebase/storage';
 import User = firebase.User;
 
 @Component({
@@ -47,7 +46,7 @@ export class PaymentPage implements OnInit {
         private navParams: NavParams,
         private firestore: AngularFirestore,
         private auth: Auth,
-        private toastService: ToastService,
+        private toastService: ToastService
     ) {
 
         this.paymentForm = this.formBuilder.group({
@@ -260,7 +259,7 @@ export class PaymentPage implements OnInit {
         console.log('this.selectedFiles', this.selectedFiles)
     }
 
-    upload(): void {
+    async upload(): Promise<void> {
         if (this.selectedFiles) {
             const file: File | null = this.selectedFiles.item(0);
 
@@ -269,15 +268,40 @@ export class PaymentPage implements OnInit {
 
                 console.log('the currenty file upload', this.currentFileUpload)
 
+                const filePath = '/uploads-receipts/' + file.name; // Set the desired storage path
 
-                // this.uploadService.pushFileToStorage(this.currentFileUpload).subscribe(
-                //     percentage => {
-                //         this.percentage = Math.round(percentage ? percentage : 0);
-                //     },
-                //     error => {
-                //         console.log(error);
-                //     }
-                // );
+                console.log('filepath', filePath)
+
+                // const newImageRef = ref(this.storage, filePath);
+                //
+                // console.log(newImageRef)
+                //
+                // const fileSnapshot = await uploadBytesResumable(newImageRef, file);
+                //
+                // console.log('filesnapshot', fileSnapshot)
+                //
+                // debugger
+
+                // const fileRef = this.storage.ref(filePath);
+                //
+                // // Upload the file to Firebase Storage
+                // const task = fileRef.put(file);
+                //
+                // // Track the upload progress
+                // task.percentageChanges().subscribe(percentage => {
+                //     this.percentage = Math.round(percentage ? percentage : 0);
+                // });
+                //
+                // // Handle the completion of the upload
+                // task.then(() => {
+                //     // File uploaded successfully
+                //     console.log('File uploaded:', filePath);
+                // }).catch(error => {
+                //     // Handle any errors during the upload
+                //     console.error('Error uploading file:', error);
+                // })
+
+
             }
         }
     }
