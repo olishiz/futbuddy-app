@@ -156,6 +156,9 @@ export class PaymentPage implements OnInit {
 
         // Calculate the total price and update calculatedFees
         this.calculatedFees = this.calculateTotalPrice();
+
+        // Minus the spotsLeft variable by one
+        this.spotsLeft--;
     }
 
     removeFriend(index: number) {
@@ -166,6 +169,9 @@ export class PaymentPage implements OnInit {
 
         // Calculate the total price and update calculatedFees
         this.calculatedFees = this.calculateTotalPrice();
+
+        // Add the spotsLeft variable by one
+        this.spotsLeft++;
     }
 
     calculateTotalPrice(): number {

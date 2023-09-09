@@ -59,7 +59,10 @@
 
             <br>
 
-            <ion-button (click)="addFriendButton()" style="margin-top: 10px;">Add Friend</ion-button>
+            <ion-button *ngIf="this.spotsLeft != 1" (click)="addFriendButton()" style="margin-top: 10px;">Add Friend</ion-button>
+
+            <!--  If spotsLeft == 1, which means - only him available, then hide this button  -->
+            <ion-button *ngIf="this.spotsLeft == 1" [disabled]="true" style="margin-top: 10px;">Not Allowed</ion-button>
 
             <br> <br>
 
