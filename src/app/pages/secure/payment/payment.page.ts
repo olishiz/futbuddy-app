@@ -6,6 +6,9 @@ import { Auth, user } from "@angular/fire/auth";
 import { Subscription } from "rxjs";
 import firebase from "firebase/compat";
 import { ToastService } from "../../../services/toast/toast.service";
+import { QrCodePage } from "../qr-code/qr-code.page";
+import { FileUpload } from "../../../models/file-upload.model";
+import 'firebase/storage';
 import User = firebase.User;
 
 @Component({
@@ -27,6 +30,16 @@ export class PaymentPage implements OnInit {
 
     calculatedFees: number = 0
     spotsLeft: number = 0
+
+    // PDF Upload Images
+    selectedImage: any; // to store the image locally
+    uploadPercent: any; // for the progress bar
+    imagePreview: string; // to store the base64 encoded preview
+
+    // PDF bezkover Upload Files
+    selectedFiles?: FileList;
+    currentFileUpload?: FileUpload;
+    percentage = 0;
 
     constructor(
         private modalController: ModalController,
@@ -84,6 +97,12 @@ export class PaymentPage implements OnInit {
 
 
     async addPlayerToGame(gameId: any) {
+
+        // Validation steps for not empty array in friends array
+        if (this.checkFriendNames()) {
+            await this.toastService.presentToast('Error', 'Please input friend name', 'top', 'danger', 2000);
+            return
+        }
 
         // If payment form is valid, proceed
         if (this.paymentForm.valid) {
@@ -174,6 +193,15 @@ export class PaymentPage implements OnInit {
         this.spotsLeft++;
     }
 
+    checkFriendNames(): boolean {
+        for (const friend of this.friends) {
+            if (!friend.name || friend.name.trim() === '') {
+                return true; // At least one friend's name is empty
+            }
+        }
+        return false; // All friend names are filled
+    }
+
     calculateTotalPrice(): number {
 
         const basePrice = this.extractNumberFromPrice(this.game.price);
@@ -194,6 +222,64 @@ export class PaymentPage implements OnInit {
 
         // If a match is found, parse it to an integer; otherwise, return 0
         return match ? parseInt(match[0], 10) : 0;
+    }
+
+    async openQrCodeModal() {
+
+        console.log('open open')
+
+        // Open filter modal
+        const modal = await this.modalController.create({
+            component: QrCodePage,
+            swipeToClose: true,
+        });
+
+        return await modal.present();
+
+    }
+
+    onImageChange(event: any) {
+        const reader = new FileReader();
+
+        if (event.target.files && event.target.files[0]) {
+            const file = event.target.files[0];
+            this.selectedImage = file; // Store the actual file object for uploading
+
+            console.log("Image loaded:", this.selectedImage.name); // Log the name of the loaded image
+
+            reader.readAsDataURL(file);
+
+            reader.onload = () => {
+                this.imagePreview = reader.result as string;  // Set the base64 encoded preview
+            };
+        }
+    }
+
+    selectFile(event: any): void {
+        this.selectedFiles = event.target.files;
+        console.log('this.selectedFiles', this.selectedFiles)
+    }
+
+    upload(): void {
+        if (this.selectedFiles) {
+            const file: File | null = this.selectedFiles.item(0);
+
+            if (file) {
+                this.currentFileUpload = new FileUpload(file);
+
+                console.log('the currenty file upload', this.currentFileUpload)
+
+
+                // this.uploadService.pushFileToStorage(this.currentFileUpload).subscribe(
+                //     percentage => {
+                //         this.percentage = Math.round(percentage ? percentage : 0);
+                //     },
+                //     error => {
+                //         console.log(error);
+                //     }
+                // );
+            }
+        }
     }
 
 }

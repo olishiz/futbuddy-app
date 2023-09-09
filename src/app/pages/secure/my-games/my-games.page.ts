@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ref, Storage, uploadBytesResumable, getDownloadURL, uploadBytes   } from "@angular/fire/storage";
-import { finalize } from 'rxjs/operators';
+import { ref, Storage, uploadBytes } from "@angular/fire/storage";
 
 @Component({
     selector: 'app-my-games',
@@ -8,12 +7,12 @@ import { finalize } from 'rxjs/operators';
     styleUrls: ['./my-games.page.scss'],
 })
 export class MyGamesPage implements OnInit {
-  
+
 
     selectedImage: any; // to store the image locally
-    uploadPercent: any; // for the progress bar    
+    uploadPercent: any; // for the progress bar
     imagePreview: string; // to store the base64 encoded preview
-    
+
 
     constructor(private storage: Storage) {
     }
@@ -39,26 +38,23 @@ export class MyGamesPage implements OnInit {
     }
 
     uploadFile(fileInput: HTMLInputElement) {
-      if (!fileInput.files || fileInput.files.length === 0) return;
-  
-      const file = fileInput.files[0];
-      console.log("Image loaded:", file.name);
-      
-      
-      const filePath = `images/${file.name}`;
-      const storageRef = ref(this.storage, filePath);
+        if (!fileInput.files || fileInput.files.length === 0) return;
 
-    
-      //const task = uploadBytesResumable(storageRef, file);      
-      // 'file' comes from the Blob or File API
-      uploadBytes(storageRef, file).then((snapshot) => {
-      console.log('Uploaded a blob or file!');
-      });    
-    
+        const file = fileInput.files[0];
+        console.log("Image loaded:", file.name);
+
+
+        const filePath = `images/${file.name}`;
+        const storageRef = ref(this.storage, filePath);
+
+
+        //const task = uploadBytesResumable(storageRef, file);
+        // 'file' comes from the Blob or File API
+        uploadBytes(storageRef, file).then((snapshot) => {
+            console.log('Uploaded a blob or file!');
+        });
+
     }
-  
-  
-  
-  
+
 
 }

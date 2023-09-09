@@ -49,7 +49,9 @@
             <ion-list *ngFor="let friend of friends; let i = index">
                 <ion-item>
                     <ion-label position="floating">Friend {{ i + 1 }}</ion-label>
-                    <ion-input [value]="friend.name" (input)="updateFriendName(i, $event.target.value)" name="friendName{{ i }}" placeholder="Input friend name" required></ion-input>
+                    <ion-input [value]="friend.name" (input)="updateFriendName(i, $event.target.value)"
+                               name="friendName{{ i }}" placeholder="Input friend name" required
+                               [clearInput]="true"></ion-input>
                     <ion-button fill="clear" color="danger" (click)="removeFriend(i)">
                         <ion-icon name="close-circle"></ion-icon>
                         Remove
@@ -59,7 +61,8 @@
 
             <br>
 
-            <ion-button *ngIf="this.spotsLeft != 1" (click)="addFriendButton()" style="margin-top: 10px;">Add Friend</ion-button>
+            <ion-button *ngIf="this.spotsLeft != 1" (click)="addFriendButton()" style="margin-top: 10px;">Add Friend
+            </ion-button>
 
             <!--  If spotsLeft == 1, which means - only him available, then hide this button  -->
             <ion-button *ngIf="this.spotsLeft == 1" [disabled]="true" style="margin-top: 10px;">Not Allowed</ion-button>
@@ -79,8 +82,6 @@
             <br>
 
             <div *ngIf="friends.length > 0">
-                <ion-chip color="light">Total Calculated Price</ion-chip>
-
                 <div class="ion-text-center">
                     <ion-text color="light" style="margin-top: 10px">
                         <ion-icon name="cash-outline"></ion-icon>
@@ -88,6 +89,31 @@
                         <br>
                     </ion-text>
                 </div>
+            </div>
+
+            <br>
+
+            <ion-chip color="light">Payment Method</ion-chip>
+
+            <div class="ion-text-center">
+
+                <ion-row style="margin-top: 10px" class="ion-justify-content-center">
+
+                    <input style="margin-bottom: 10px" type="file" class="text-nowrap text-truncate"
+                           (change)="selectFile($event)">
+
+                    <ion-button (click)="upload()" size="small" color="success" style="margin-right: 5px;">
+                        Upload
+                    </ion-button>
+                    <ion-button (click)="openQrCodeModal()" size="small" color="light">
+                        View Qr Code
+                    </ion-button>
+                </ion-row>
+
+                <br>
+                <ion-text color="light">
+                    Upload a receipt of DuitNow Receipt and our system will verify the payment.
+                </ion-text>
             </div>
 
 

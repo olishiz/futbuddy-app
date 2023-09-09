@@ -7,3 +7,14 @@ ion-checkbox {
 //  border-radius: 6px;
 //  border: 2px solid #6815ec;
 //}
+
+/* CSS */
+.file-input-button {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  cursor: pointer;
+  color: #fff; /* Button text color */
+  padding: 10px 20px; /* Button padding */
+  border-radius: 4px; /* Button border radius */
+}

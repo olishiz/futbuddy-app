@@ -9,9 +9,9 @@ import { AppComponent } from './app.component';
 
 // NgCharts
 import { NgChartsModule } from 'ng2-charts';
-import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { getApp, initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
-import { getAnalytics, provideAnalytics, ScreenTrackingService, UserTrackingService } from '@angular/fire/analytics';
+import { ScreenTrackingService, UserTrackingService } from '@angular/fire/analytics';
 import { getAuth, provideAuth } from '@angular/fire/auth';
 import { getDatabase, provideDatabase } from '@angular/fire/database';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
@@ -26,6 +26,7 @@ import { getStorage, provideStorage } from '@angular/fire/storage';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { FIREBASE_OPTIONS } from '@angular/fire/compat';
+import { AngularFireStorageModule, BUCKET } from "@angular/fire/compat/storage";
 
 @NgModule({
     declarations: [AppComponent],
@@ -44,7 +45,8 @@ import { FIREBASE_OPTIONS } from '@angular/fire/compat';
         provideMessaging(() => getMessaging()),
         providePerformance(() => getPerformance()),
         provideRemoteConfig(() => getRemoteConfig()),
-        provideStorage(() => getStorage())
+        provideStorage(() => getStorage(getApp())),
+        AngularFireStorageModule
     ],
     providers: [
         {
@@ -56,6 +58,10 @@ import { FIREBASE_OPTIONS } from '@angular/fire/compat';
         {
             provide: FIREBASE_OPTIONS,
             useValue: environment.firebase
+        },
+        {
+            provide: BUCKET,
+            useValue: 'gs://futbuddy-kl.appspot.com/'
         }
     ],
     bootstrap: [AppComponent],

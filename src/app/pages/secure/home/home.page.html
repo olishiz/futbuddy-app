@@ -20,7 +20,8 @@
         </ion-list-header>
 
         <ion-list-header>
-            <ion-label color="white"><p style="color: white; font-weight: 500;">Here's some suggested games for you:</p></ion-label>
+            <ion-label color="white"><p style="color: white; font-weight: 500;">Here's some suggested games for you:</p>
+            </ion-label>
         </ion-list-header>
 
         <!-- Skeletons -->
@@ -90,6 +91,9 @@
 
                 <ion-button *ngIf="game.spotsLeft != 0" (click)="goToGamePage(game)">Book Slot</ion-button>
                 <ion-button *ngIf="game.spotsLeft == 0" [disabled]="true">Slots Fully Booked</ion-button>
+                <ion-button color="light" *ngIf="game.spotsLeft == 0" (click)="goToGamePage(game)"
+                            style="margin-top: 10px">View Game
+                </ion-button>
 
             </ion-card-content>
         </ion-card>

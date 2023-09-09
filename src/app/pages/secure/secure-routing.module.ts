@@ -22,6 +22,10 @@ const routes: Routes = [
         path: 'games/:id',
         loadChildren: () => import('./games/games.module').then(m => m.GamesPageModule)
     },
+    {
+        path: 'qr-code',
+        loadChildren: () => import('./qr-code/qr-code.module').then(m => m.QrCodePageModule)
+    },
 
 
     // not in used yet
@@ -41,6 +45,8 @@ const routes: Routes = [
         path: 'my-games',
         loadChildren: () => import('./my-games/my-games.module').then(m => m.MyGamesPageModule)
     },
+
+
 
 
 ];
