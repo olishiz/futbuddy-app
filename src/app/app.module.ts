@@ -37,7 +37,6 @@ import { FIREBASE_OPTIONS } from '@angular/fire/compat';
         AppRoutingModule,
         NgChartsModule,
         provideFirebaseApp(() => initializeApp(environment.firebase)),
-        provideAnalytics(() => getAnalytics()),
         provideAuth(() => getAuth()),
         provideDatabase(() => getDatabase()),
         provideFirestore(() => getFirestore()),
