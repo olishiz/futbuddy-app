@@ -9,15 +9,16 @@
     <h2>Upload Image to Firebase Storage</h2>
     <p>Select an image and then click the "Upload" button to upload it to Firebase Storage.</p>
 
-    <input type="file" (change)="onImageChange($event)">
+    <input type="file" (change)="onImageChange($event)" #fileInput>
 
     <!-- Preview selected image -->
-    <img *ngIf="selectedImage" [src]="selectedImage" alt="Selected Image" width="100%">
+    <img *ngIf="imagePreview" [src]="imagePreview" alt="Selected Image" width="100%">
+
 
     <!-- Progress Bar -->
     <ion-progress-bar *ngIf="uploadPercent | async as percent" value="{{ percent / 100 }}"></ion-progress-bar>
 
     <!-- Upload Button -->
-    <ion-button expand="full" (click)="uploadImage()">Upload to Firebase</ion-button>
+    <ion-button expand="full" (click)="uploadFile(fileInput)">Upload to Firebase</ion-button>
   </div>
 </ion-content>

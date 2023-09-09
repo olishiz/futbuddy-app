@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ref, Storage, uploadBytesResumable } from "@angular/fire/storage";
+import { ref, Storage, uploadBytesResumable, getDownloadURL, uploadBytes   } from "@angular/fire/storage";
+import { finalize } from 'rxjs/operators';
 
 @Component({
     selector: 'app-my-games',
@@ -7,9 +8,12 @@ import { ref, Storage, uploadBytesResumable } from "@angular/fire/storage";
     styleUrls: ['./my-games.page.scss'],
 })
 export class MyGamesPage implements OnInit {
+  
 
     selectedImage: any; // to store the image locally
-    uploadPercent: any; // for the progress bar
+    uploadPercent: any; // for the progress bar    
+    imagePreview: string; // to store the base64 encoded preview
+    
 
     constructor(private storage: Storage) {
     }
@@ -21,43 +25,40 @@ export class MyGamesPage implements OnInit {
         const reader = new FileReader();
 
         if (event.target.files && event.target.files[0]) {
-            const [file] = event.target.files;
+            const file = event.target.files[0];
+            this.selectedImage = file; // Store the actual file object for uploading
+
+            console.log("Image loaded:", this.selectedImage.name); // Log the name of the loaded image
+
             reader.readAsDataURL(file);
 
             reader.onload = () => {
-                this.selectedImage = reader.result as string;
+                this.imagePreview = reader.result as string;  // Set the base64 encoded preview
             };
         }
     }
 
-    uploadImage() {
-        if (!this.selectedImage) {
-            console.error('No image selected');
-            return;
-        }
+    uploadFile(fileInput: HTMLInputElement) {
+      if (!fileInput.files || fileInput.files.length === 0) return;
+  
+      const file = fileInput.files[0];
+      console.log("Image loaded:", file.name);
+      
+      
+      const filePath = `images/${file.name}`;
+      const storageRef = ref(this.storage, filePath);
 
-        // This is the part you mentioned to add:
-        const storageRef = ref(this.storage, this.selectedImage.name);
-        uploadBytesResumable(storageRef, this.selectedImage);
-
-        const filePath = `uploads/${new Date().getTime()}_${Math.floor(Math.random() * 1000)}`; // random name based on current time and a random number
-        const fileStorageRef = ref(this.storage, filePath);
-
-        const task = uploadBytesResumable(fileStorageRef, this.selectedImage);
-
-        // track the state changes of the task to get percentage
-        task.on('state_changed', (snapshot) => {
-            const percent = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-            this.uploadPercent = percent;
-        });
-
-        // handle the upload completion
-        task.then((snapshot) => {
-            console.log('Uploaded the image!', snapshot);
-            // you can get the download URL here if needed
-        }).catch((error) => {
-            console.error('Failed to upload the image', error);
-        });
+    
+      //const task = uploadBytesResumable(storageRef, file);      
+      // 'file' comes from the Blob or File API
+      uploadBytes(storageRef, file).then((snapshot) => {
+      console.log('Uploaded a blob or file!');
+      });    
+    
     }
+  
+  
+  
+  
 
 }
