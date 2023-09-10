@@ -169,24 +169,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! tslib */ 39859);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/core */ 14001);
 /* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/platform-browser */ 86219);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @angular/router */ 13252);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @angular/router */ 13252);
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic/angular */ 91346);
 /* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./app-routing.module */ 68438);
 /* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./app.component */ 36104);
 /* harmony import */ var ng2_charts__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ng2-charts */ 40923);
 /* harmony import */ var _angular_fire_app__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/fire/app */ 11576);
 /* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../environments/environment */ 41251);
-/* harmony import */ var _angular_fire_analytics__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/fire/analytics */ 18819);
-/* harmony import */ var _angular_fire_auth__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @angular/fire/auth */ 75656);
-/* harmony import */ var _angular_fire_database__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @angular/fire/database */ 22956);
-/* harmony import */ var _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @angular/fire/firestore */ 44783);
-/* harmony import */ var _angular_fire_functions__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @angular/fire/functions */ 60639);
-/* harmony import */ var _angular_fire_messaging__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @angular/fire/messaging */ 57420);
-/* harmony import */ var _angular_fire_performance__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @angular/fire/performance */ 71445);
-/* harmony import */ var _angular_fire_remote_config__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @angular/fire/remote-config */ 71976);
-/* harmony import */ var _angular_fire_storage__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @angular/fire/storage */ 9243);
+/* harmony import */ var _angular_fire_analytics__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @angular/fire/analytics */ 18819);
+/* harmony import */ var _angular_fire_auth__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/fire/auth */ 75656);
+/* harmony import */ var _angular_fire_database__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @angular/fire/database */ 22956);
+/* harmony import */ var _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @angular/fire/firestore */ 44783);
+/* harmony import */ var _angular_fire_functions__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @angular/fire/functions */ 60639);
+/* harmony import */ var _angular_fire_storage__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @angular/fire/storage */ 9243);
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/forms */ 18346);
-/* harmony import */ var _angular_fire_compat__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! @angular/fire/compat */ 33467);
+/* harmony import */ var _angular_fire_compat__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @angular/fire/compat */ 33467);
+/* harmony import */ var _angular_fire_compat_storage__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @angular/fire/compat/storage */ 43430);
 
 
 
@@ -204,10 +202,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-
-
 // ReactiveForms
+
 
 
 let AppModule = class AppModule {
@@ -223,26 +219,26 @@ AppModule = (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__decorate)([
             _app_routing_module__WEBPACK_IMPORTED_MODULE_0__.AppRoutingModule,
             ng2_charts__WEBPACK_IMPORTED_MODULE_8__.NgChartsModule,
             (0,_angular_fire_app__WEBPACK_IMPORTED_MODULE_9__.provideFirebaseApp)(() => (0,_angular_fire_app__WEBPACK_IMPORTED_MODULE_9__.initializeApp)(_environments_environment__WEBPACK_IMPORTED_MODULE_2__.environment.firebase)),
-            (0,_angular_fire_analytics__WEBPACK_IMPORTED_MODULE_10__.provideAnalytics)(() => (0,_angular_fire_analytics__WEBPACK_IMPORTED_MODULE_10__.getAnalytics)()),
-            (0,_angular_fire_auth__WEBPACK_IMPORTED_MODULE_11__.provideAuth)(() => (0,_angular_fire_auth__WEBPACK_IMPORTED_MODULE_11__.getAuth)()),
-            (0,_angular_fire_database__WEBPACK_IMPORTED_MODULE_12__.provideDatabase)(() => (0,_angular_fire_database__WEBPACK_IMPORTED_MODULE_12__.getDatabase)()),
-            (0,_angular_fire_firestore__WEBPACK_IMPORTED_MODULE_13__.provideFirestore)(() => (0,_angular_fire_firestore__WEBPACK_IMPORTED_MODULE_13__.getFirestore)()),
-            (0,_angular_fire_functions__WEBPACK_IMPORTED_MODULE_14__.provideFunctions)(() => (0,_angular_fire_functions__WEBPACK_IMPORTED_MODULE_14__.getFunctions)()),
-            (0,_angular_fire_messaging__WEBPACK_IMPORTED_MODULE_15__.provideMessaging)(() => (0,_angular_fire_messaging__WEBPACK_IMPORTED_MODULE_15__.getMessaging)()),
-            (0,_angular_fire_performance__WEBPACK_IMPORTED_MODULE_16__.providePerformance)(() => (0,_angular_fire_performance__WEBPACK_IMPORTED_MODULE_16__.getPerformance)()),
-            (0,_angular_fire_remote_config__WEBPACK_IMPORTED_MODULE_17__.provideRemoteConfig)(() => (0,_angular_fire_remote_config__WEBPACK_IMPORTED_MODULE_17__.getRemoteConfig)()),
-            (0,_angular_fire_storage__WEBPACK_IMPORTED_MODULE_18__.provideStorage)(() => (0,_angular_fire_storage__WEBPACK_IMPORTED_MODULE_18__.getStorage)())
+            (0,_angular_fire_auth__WEBPACK_IMPORTED_MODULE_10__.provideAuth)(() => (0,_angular_fire_auth__WEBPACK_IMPORTED_MODULE_10__.getAuth)()),
+            (0,_angular_fire_database__WEBPACK_IMPORTED_MODULE_11__.provideDatabase)(() => (0,_angular_fire_database__WEBPACK_IMPORTED_MODULE_11__.getDatabase)()),
+            (0,_angular_fire_firestore__WEBPACK_IMPORTED_MODULE_12__.provideFirestore)(() => (0,_angular_fire_firestore__WEBPACK_IMPORTED_MODULE_12__.getFirestore)()),
+            (0,_angular_fire_functions__WEBPACK_IMPORTED_MODULE_13__.provideFunctions)(() => (0,_angular_fire_functions__WEBPACK_IMPORTED_MODULE_13__.getFunctions)()),
+            (0,_angular_fire_storage__WEBPACK_IMPORTED_MODULE_14__.provideStorage)(() => (0,_angular_fire_storage__WEBPACK_IMPORTED_MODULE_14__.getStorage)()),
         ],
         providers: [
             {
-                provide: _angular_router__WEBPACK_IMPORTED_MODULE_19__.RouteReuseStrategy,
+                provide: _angular_router__WEBPACK_IMPORTED_MODULE_15__.RouteReuseStrategy,
                 useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_6__.IonicRouteStrategy
             },
-            _angular_fire_analytics__WEBPACK_IMPORTED_MODULE_10__.ScreenTrackingService,
-            _angular_fire_analytics__WEBPACK_IMPORTED_MODULE_10__.UserTrackingService,
+            _angular_fire_analytics__WEBPACK_IMPORTED_MODULE_16__.ScreenTrackingService,
+            _angular_fire_analytics__WEBPACK_IMPORTED_MODULE_16__.UserTrackingService,
             {
-                provide: _angular_fire_compat__WEBPACK_IMPORTED_MODULE_20__.FIREBASE_OPTIONS,
+                provide: _angular_fire_compat__WEBPACK_IMPORTED_MODULE_17__.FIREBASE_OPTIONS,
                 useValue: _environments_environment__WEBPACK_IMPORTED_MODULE_2__.environment.firebase
+            },
+            {
+                provide: _angular_fire_compat_storage__WEBPACK_IMPORTED_MODULE_18__.BUCKET,
+                useValue: 'gs://futbuddy-kl.appspot.com/'
             }
         ],
         bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_1__.AppComponent],
@@ -595,7 +591,7 @@ const environment = {
         messagingSenderId: '1000652290768',
         measurementId: 'G-18WTJD6DVS',
     },
-    production: true
+    production: false
 };
 
 
