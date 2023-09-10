@@ -97,10 +97,10 @@
 
             <div class="ion-text-center">
 
-                <ion-row style="margin-top: 10px" class="ion-justify-content-center">
+                <input style="margin-bottom: 10px" type="file" class="text-nowrap text-truncate" style="margin: 15px"
+                       (change)="selectFile($event)">
 
-                    <input style="margin-bottom: 10px" type="file" class="text-nowrap text-truncate"
-                           (change)="selectFile($event)">
+                <ion-row style="margin-top: 10px" class="ion-justify-content-center">
 
                     <ion-button (click)="upload()" size="small" color="success" style="margin-right: 5px;">
                         Upload
@@ -119,9 +119,19 @@
 
         </div>
 
-        <div class="ion-text-center" style="margin-top: 20px; display: flex; align-items: center; margin-left: 10%">
+        <div style="margin-top: 20px; display: flex; align-items: center; margin-left: 10px">
             <ion-checkbox formControlName="agree" color="light" style="margin-right: 8px;"></ion-checkbox>
-            I agree to the terms and conditions
+            <ion-text color="light">
+                <small>I have read and accept the
+                    <a href="https://docs.google.com/document/d/176yd1FKoLXZYo448uO8-zss47EQ9ljuaX756M-IAObY/edit?usp=sharing" target="_blank">
+                        Terms & Conditions
+                    </a>
+                    and
+                    <a href="https://docs.google.com/document/d/1rnCh_X1zBIJcypzwh3G2axpfBqYirPAoKM2uXfoGQrg/edit?usp=sharing" target="_blank">
+                        Privacy Policy
+                    </a>
+                </small>
+            </ion-text>
         </div>
 
         <div class="ion-text-center" style="margin-top: 20px">
